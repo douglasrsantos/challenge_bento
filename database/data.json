@@ -1,0 +1,155 @@
+{
+    "user": {
+        "id": 1,
+        "type": "Delivery",
+        "name": "Bacangan, Sambit",
+        "image": "user.png"
+    },
+    "offerBanners": [
+        {
+            "id": 1,
+            "title": "Top deal !",
+            "subtitle": "FRESH AVOCADO UP TO 15% OFF",
+            "image": "avocado.png"
+        },
+        {
+            "id": 2,
+            "title": "Great offer !",
+            "subtitle": "PINEAPPLE 10% OFF",
+            "image": "pineapple.png"
+        },
+        {
+            "id": 3,
+            "title": "Enjoy !",
+            "subtitle": "SHRIMP WITH SPECIAL PRICE",
+            "image": "shrimp.png"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Vegan",
+            "image": "vegan.png"
+        },
+        {
+            "id": 2,
+            "name": "Meat",
+            "image": "meat.png"
+        },
+        {
+            "id": 3,
+            "name": "Fruits",
+            "image": "fruits.png"
+        },
+        {
+            "id": 4,
+            "name": "Milk",
+            "image": "milk.png"
+        },
+        {
+            "id": 5,
+            "name": "Fish",
+            "image": "fish.png"
+        }
+    ],
+    "todaysSpecial": [
+        {
+            "id": 1,
+            "name": "orange",
+            "rating": 4.5,
+            "image": "orange-1.png"
+        },
+        {
+            "id": 2,
+            "name": "cabbage",
+            "rating": 4.5,
+            "image": "cabbage-1.png"
+        },
+        {
+            "id": 3,
+            "name": "dragon_fruit",
+            "rating": 4.8,
+            "image": "dragon-fruit-1.png"
+        },
+        {
+            "id": 4,
+            "name": "coconut",
+            "rating": 4.2,
+            "image": "coconut-1.png"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Fresh Orange",
+            "rating": 4.6,
+            "shop": "Alisha Mart",
+            "description": "Cultivated without seeds, which makes it interesting for culinary use.",
+            "price": 9.15,
+            "discountPercent": 10,
+            "productCategories": [
+                {
+                    "id": 1,
+                    "name": "Vegetarian",
+                    "image": "vegetarian.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Halal Food",
+                    "image": "halal-food.webp"
+                },
+                {
+                    "id": 3,
+                    "name": "Gluten-free",
+                    "image": "gluten-free.png"
+                }
+            ],
+            "images": [
+                {
+                    "id": 1,
+                    "image": "orange-1"
+                },
+                {
+                    "id": 2,
+                    "image": "orange-2"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Organic Fresh Green Cabbage",
+            "rating": 4.5,
+            "shop": "Alisha Mart",
+            "description": "ore commonly known as green cabbage, the cannonball cabbage is one of the most popular cabbage varieties. It is so named for the way its leaves wound tightly over one.",
+            "price": 8.15,
+            "discountPercent": 15,
+            "productCategories": [
+                {
+                    "id": 1,
+                    "name": "Vegetarian",
+                    "image": "vegetarian.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Halal Food",
+                    "image": "halal-food.webp"
+                },
+                {
+                    "id": 3,
+                    "name": "Gluten-free",
+                    "image": "gluten-free.png"
+                }
+            ],
+            "images": [
+                {
+                    "id": 3,
+                    "image": "cabbage-1"
+                },
+                {
+                    "id": 4,
+                    "image": "cabbage-2"
+                }
+            ]
+        }
+    ]
+}
