@@ -12,10 +12,10 @@ class AppFonts {
   );
 
   ///TextStyle of emphasis texts on the home
-  static TextStyle emphasisHome = GoogleFonts.nunito(
-    fontSize: 24,
+  static TextStyle emphasisHome = GoogleFonts.nunito( 
+    fontSize: 16,
     color: AppColors.darkBlue,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w800,
   );
 
   ///TextStyle of secondary texts
