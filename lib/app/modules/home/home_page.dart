@@ -48,7 +48,10 @@ class HomePage extends StatelessWidget {
       body: PageView(
         controller: controller.pageController,
         children: [
-          HomeScreen(),
+          HomeScreen(
+            onTapOrderAgain: () {},
+            onTapLocalShop: () {},
+          ),
         ],
       ),
     );
