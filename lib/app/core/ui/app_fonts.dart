@@ -22,12 +22,12 @@ class AppFonts {
   static TextStyle secondaryTexts = GoogleFonts.nunito(
     fontSize: 18,
     color: AppColors.darkBlue,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w800,
   );
 
   ///TextStyle of texts that provide additional information
   static TextStyle additionalInfoTexts = GoogleFonts.nunito(
-    fontSize: 18,
+    fontSize: 16,
     color: AppColors.darkBlue,
   );
 
