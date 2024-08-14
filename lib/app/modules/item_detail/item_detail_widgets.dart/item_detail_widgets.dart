@@ -4,3 +4,4 @@ export './content_image_list.dart';
 export './title_and_rating.dart';
 export './card_product_characteristics.dart';
 export './product_characteristic.dart';
+export './shop_text.dart';

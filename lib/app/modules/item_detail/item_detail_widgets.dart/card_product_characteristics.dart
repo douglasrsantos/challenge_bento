@@ -9,7 +9,7 @@ class CardProductCharacteristics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         width: double.maxFinite,

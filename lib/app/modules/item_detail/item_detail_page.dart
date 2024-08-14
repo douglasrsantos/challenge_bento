@@ -18,11 +18,18 @@ class ItemDetailPage extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 ImageList(),
-                ListIndicator(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ListIndicator(),
+                  ],
+                ),
                 TitleAndRating(),
+                ShopText(),
                 CardProductCharacteristics(),
               ],
             ),
