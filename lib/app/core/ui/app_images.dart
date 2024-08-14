@@ -3,4 +3,5 @@ class AppImages {
   static const localShop = 'assets/images/local-shop.png';
   static const avocado = 'assets/images/avocado.png';
   static const veganCategory = 'assets/images/vegan.png';
+  static const orange1 = 'assets/images/orange-1.png';
 }

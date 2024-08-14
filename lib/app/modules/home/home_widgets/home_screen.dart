@@ -14,22 +14,25 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InitialButtons(
-          onTapOrderAgain: onTapOrderAgain,
-          onTapLocalShop: onTapLocalShop,
-        ),
-        const BannersList(),
-        const BannerListIndicator(),
-        const SessionTitle(leftText: 'Shop by category'),
-        const CategoriesList(),
-        SessionTitle(
-          leftText: "Today's Special",
-          rightText: 'See all',
-          onTapRightText: () {},
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          InitialButtons(
+            onTapOrderAgain: onTapOrderAgain,
+            onTapLocalShop: onTapLocalShop,
+          ),
+          const BannersList(),
+          const BannerListIndicator(),
+          const SessionTitle(leftText: 'Shop by category'),
+          const CategoriesList(),
+          SessionTitle(
+            leftText: "Today's Special",
+            rightText: 'See all',
+            onTapRightText: () {},
+          ),
+          const ProductsTodaysSpecial()
+        ],
+      ),
     );
   }
 }

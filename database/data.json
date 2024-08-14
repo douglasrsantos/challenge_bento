@@ -57,25 +57,15 @@
             "id": 1,
             "name": "orange",
             "rating": 4.5,
-            "image": "orange-1.png"
+            "image": "orange-1.png",
+            "colorCode": "FAF0DC"
         },
         {
             "id": 2,
             "name": "cabbage",
             "rating": 4.5,
-            "image": "cabbage-1.png"
-        },
-        {
-            "id": 3,
-            "name": "dragon_fruit",
-            "rating": 4.8,
-            "image": "dragon-fruit-1.png"
-        },
-        {
-            "id": 4,
-            "name": "coconut",
-            "rating": 4.2,
-            "image": "coconut-1.png"
+            "image": "cabbage-1.png",
+            "colorCode": "E6FADC"
         }
     ],
     "products": [
