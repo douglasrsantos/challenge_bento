@@ -14,13 +14,14 @@ class ItemDetailPage extends StatelessWidget {
         onTapArrowBack: () => context.pop(),
         showFavoriteIcon: true,
       ),
-      body: Stack(
+      body: const Stack(
         children: [
           Positioned.fill(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 ImageList(),
+                ListIndicator(),
                 TitleAndRating(),
               ],
             ),
