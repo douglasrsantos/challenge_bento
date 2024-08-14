@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoriesList extends StatelessWidget {
   const CategoriesList({super.key});
@@ -20,7 +21,10 @@ class CategoriesList extends StatelessWidget {
               left: index == 0 ? 24 : 0,
               right: index == 5 - 1 ? 24 : 0,
             ),
-            child: const ContentCategoriesList(text: 'Vegan'),
+            child: ContentCategoriesList(
+              text: 'Vegan',
+              onTap: () => context.push('/under-construction'),
+            ),
           );
         },
       ),

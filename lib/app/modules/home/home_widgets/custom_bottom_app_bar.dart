@@ -8,6 +8,7 @@ class CustomBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      
       elevation: 20,
       height: 80,
       color: AppColors.backgroundColor,

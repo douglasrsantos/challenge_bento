@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:challenge_bento/app/core/ui/ui.dart';
 import 'package:challenge_bento/app/modules/home/home.dart';
 import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
+import 'package:challenge_bento/app/modules/under_construction/under_construction.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   final HomeStore controller;
@@ -22,8 +24,11 @@ class HomePage extends StatelessWidget {
           name: 'Bacangan, Sambit',
           onTap: () {},
         ),
-        actions: const [
-          UserImage(imageAsset: ''),
+        actions: [
+          UserImage(
+            imageAsset: '',
+            onTap: () => context.push('/under-construction'),
+          ),
         ],
       ),
       extendBody: true,
@@ -49,6 +54,9 @@ class HomePage extends StatelessWidget {
         controller: controller.pageController,
         children: const [
           HomeScreen(),
+          UnderConstructionPage(showAppBar: false,),
+          UnderConstructionPage(showAppBar: false,),
+          UnderConstructionPage(showAppBar: false,),
         ],
       ),
     );

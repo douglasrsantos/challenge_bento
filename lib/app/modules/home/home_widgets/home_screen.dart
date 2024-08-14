@@ -12,8 +12,8 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           InitialButtons(
-            onTapOrderAgain: () => context.go('/under-construction'),
-            onTapLocalShop: () => context.go('/under-construction'),
+            onTapOrderAgain: () => context.push('/under-construction'),
+            onTapLocalShop: () => context.push('/under-construction'),
           ),
           const BannersList(),
           const BannerListIndicator(),

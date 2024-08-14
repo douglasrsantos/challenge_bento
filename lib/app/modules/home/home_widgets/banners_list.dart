@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class BannersList extends StatelessWidget {
   const BannersList({super.key});
@@ -20,7 +21,9 @@ class BannersList extends StatelessWidget {
               left: index == 0 ? 24 : 0,
               right: index == 3 - 1 ? 24 : 0,
             ),
-            child: const ContentBannerList(),
+            child: ContentBannerList(
+              onTap: () => context.push('/under-construction'),
+            ),
           );
         },
       ),

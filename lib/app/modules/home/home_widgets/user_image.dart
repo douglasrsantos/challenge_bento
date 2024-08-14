@@ -4,16 +4,18 @@ import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class UserImage extends StatelessWidget {
   final String imageAsset;
+final Function()? onTap;
 
   const UserImage({
     super.key,
     required this.imageAsset,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.only(right: 24),
         child: Container(
