@@ -22,6 +22,7 @@ class CustomBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       elevation: 20,
+      shadowColor: Colors.black,
       height: 80,
       color: AppColors.backgroundColor,
       child: Row(
