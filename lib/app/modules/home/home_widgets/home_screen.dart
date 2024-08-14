@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:challenge_bento/app/core/core_widgets/core_widgets.dart';
+import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             onTapLocalShop: () => context.push('/under-construction'),
           ),
           const BannersList(),
-          const BannerListIndicator(),
+          const ListIndicator(),
           const SectionTitle(leftText: 'Shop by category'),
           const CategoriesList(),
           SectionTitle(
