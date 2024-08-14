@@ -23,7 +23,11 @@ class ContentCategoriesList extends StatelessWidget {
           ),
           height: 70,
           width: 70,
-          child: Image.asset(AppImages.veganCategory),
+          child: Image.asset(
+            AppImages.veganCategory,
+            cacheHeight: 148,
+            cacheWidth: 148,
+          ),
         ),
         Text(
           text,

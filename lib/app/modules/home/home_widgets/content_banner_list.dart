@@ -47,7 +47,11 @@ class ContentBannerList extends StatelessWidget {
               ),
             ],
           ),
-          Image.asset(AppImages.avocado),
+          Image.asset(
+            AppImages.avocado,
+            cacheHeight: 379,
+            cacheWidth: 421,
+          ),
         ],
       ),
     );
