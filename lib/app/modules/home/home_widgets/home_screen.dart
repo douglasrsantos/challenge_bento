@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           SectionTitle(
             leftText: "Today's Special",
             rightText: 'See all',
-            onTapRightText: () {},
+            onTapRightText: () => context.push('/under-construction'),
           ),
           const ProductsTodaysSpecial()
         ],

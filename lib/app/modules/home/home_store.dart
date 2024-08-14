@@ -8,4 +8,7 @@ class HomeStore = HomeStoreBase with _$HomeStore;
 
 abstract class HomeStoreBase with Store {
   final pageController = PageController();
+
+  @observable
+  int currentPageIndex = 0;
 }
