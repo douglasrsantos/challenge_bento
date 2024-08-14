@@ -13,9 +13,10 @@ class AppFonts {
 
   ///TextStyle of emphasis texts on the home
   static TextStyle emphasisHome = GoogleFonts.nunito( 
-    fontSize: 16,
+    fontSize: 18,
     color: AppColors.darkBlue,
     fontWeight: FontWeight.w800,
+    // height: 1.2
   );
 
   ///TextStyle of secondary texts
@@ -23,6 +24,13 @@ class AppFonts {
     fontSize: 18,
     color: AppColors.darkBlue,
     fontWeight: FontWeight.w800,
+  );
+
+///TextStyle of secondary texts
+  static TextStyle seeAll = GoogleFonts.nunito(
+    fontSize: 16,
+    color: AppColors.greenButtons,
+    fontWeight: FontWeight.w700,
   );
 
   ///TextStyle of texts that provide additional information
@@ -35,6 +43,8 @@ class AppFonts {
   static TextStyle category = GoogleFonts.nunito(
     fontSize: 14,
     color: AppColors.darkBlue,
+    fontWeight: FontWeight.w900,
+
   );
 
   ///TextStyle of price and discount on product detail page
