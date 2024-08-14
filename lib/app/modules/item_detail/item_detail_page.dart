@@ -17,21 +17,24 @@ class ItemDetailPage extends StatelessWidget {
       body: const Stack(
         children: [
           Positioned.fill(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ImageList(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ListIndicator(),
-                  ],
-                ),
-                TitleAndRating(),
-                ShopText(),
-                CardProductCharacteristics(),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ImageList(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ListIndicator(),
+                    ],
+                  ),
+                  TitleAndRating(),
+                  ShopText(),
+                  CardProductCharacteristics(),
+                  ProductDetails(),
+                ],
+              ),
             ),
           ),
           Positioned.fill(
