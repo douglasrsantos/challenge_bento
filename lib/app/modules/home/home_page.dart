@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:challenge_bento/app/core/ui/ui.dart';
 import 'package:challenge_bento/app/modules/home/home.dart';
 import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
 import 'package:challenge_bento/app/modules/under_construction/under_construction.dart';
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           UserImage(
-            imageAsset: '',
+            imageAsset: AppImages.user,
             onTap: () => context.push('/under-construction'),
           ),
         ],

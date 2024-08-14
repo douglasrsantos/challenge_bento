@@ -4,7 +4,7 @@ import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class UserImage extends StatelessWidget {
   final String imageAsset;
-final Function()? onTap;
+  final Function()? onTap;
 
   const UserImage({
     super.key,
@@ -25,9 +25,12 @@ final Function()? onTap;
             shape: BoxShape.circle,
             color: AppColors.vegetarianGreen,
           ),
+          padding: const EdgeInsets.all(6),
           child: Image.asset(
             imageAsset,
             fit: BoxFit.cover,
+            cacheHeight: 110,
+            cacheWidth: 110,
           ),
         ),
       ),
