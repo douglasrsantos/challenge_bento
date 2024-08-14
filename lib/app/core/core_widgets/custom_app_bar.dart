@@ -1,3 +1,4 @@
+import 'package:challenge_bento/app/core/ui/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
@@ -20,9 +21,9 @@ class CustomAppBar extends AppBar {
                   shape: BoxShape.circle,
                   color: AppColors.cardCategoriesAndProdInfo,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black,
+                  color: AppColors.darkBlue,
                 ),
               ),
             ),
@@ -39,9 +40,9 @@ class CustomAppBar extends AppBar {
                     shape: BoxShape.circle,
                     color: AppColors.cardCategoriesAndProdInfo,
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.favorite_border,
-                    color: Colors.black,
+                    color: AppColors.darkBlue,
                   ),
                 ),
               ),

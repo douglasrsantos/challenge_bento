@@ -1,6 +1,7 @@
 import 'package:challenge_bento/app/core/injection/service_locator.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:challenge_bento/app/modules/item_detail/item_detail.dart';
 import 'package:challenge_bento/app/modules/home/home.dart';
 import 'package:challenge_bento/app/modules/under_construction/under_construction.dart';
 
@@ -13,6 +14,12 @@ final routes = GoRouter(
         return HomePage(
           controller: getIt<HomeStore>(),
         );
+      },
+    ),
+    GoRoute(
+      path: '/item-detail',
+      builder: (context, state) {
+        return const ItemDetailPage();
       },
     ),
     GoRoute(
