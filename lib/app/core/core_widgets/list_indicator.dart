@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:challenge_bento/app/core/ui/ui.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class BannerListIndicator extends StatelessWidget {
-  const BannerListIndicator({super.key});
+class ListIndicator extends StatelessWidget {
+  const ListIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {
