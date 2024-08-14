@@ -12,22 +12,30 @@ class AppFonts {
   );
 
   ///TextStyle of emphasis texts on the home
-  static TextStyle emphasisHome = GoogleFonts.nunito(
-    fontSize: 24,
+  static TextStyle emphasisHome = GoogleFonts.nunito( 
+    fontSize: 18,
     color: AppColors.darkBlue,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w800,
+    // height: 1.2
   );
 
   ///TextStyle of secondary texts
   static TextStyle secondaryTexts = GoogleFonts.nunito(
     fontSize: 18,
     color: AppColors.darkBlue,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w800,
+  );
+
+///TextStyle of secondary texts
+  static TextStyle seeAll = GoogleFonts.nunito(
+    fontSize: 16,
+    color: AppColors.greenButtons,
+    fontWeight: FontWeight.w700,
   );
 
   ///TextStyle of texts that provide additional information
   static TextStyle additionalInfoTexts = GoogleFonts.nunito(
-    fontSize: 18,
+    fontSize: 16,
     color: AppColors.darkBlue,
   );
 
@@ -35,6 +43,8 @@ class AppFonts {
   static TextStyle category = GoogleFonts.nunito(
     fontSize: 14,
     color: AppColors.darkBlue,
+    fontWeight: FontWeight.w900,
+
   );
 
   ///TextStyle of price and discount on product detail page

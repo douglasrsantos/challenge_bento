@@ -19,6 +19,7 @@ dependencies:
   go_router: ^14.2.3
   mobx: ^2.3.3+2
   mobx_codegen: ^2.6.1
+  smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
   flutter_test:
