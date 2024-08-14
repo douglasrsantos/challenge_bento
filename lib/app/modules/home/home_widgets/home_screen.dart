@@ -23,9 +23,9 @@ class HomeScreen extends StatelessWidget {
           ),
           const BannersList(),
           const BannerListIndicator(),
-          const SessionTitle(leftText: 'Shop by category'),
+          const SectionTitle(leftText: 'Shop by category'),
           const CategoriesList(),
-          SessionTitle(
+          SectionTitle(
             leftText: "Today's Special",
             rightText: 'See all',
             onTapRightText: () {},

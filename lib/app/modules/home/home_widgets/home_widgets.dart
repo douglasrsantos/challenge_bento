@@ -7,7 +7,7 @@ export './home_screen.dart';
 export './content_banner_list.dart';
 export './banners_list.dart';
 export './banner_list_indicator.dart';
-export './session_title.dart';
+export './section_title.dart';
 export './categories_list.dart';
 export './content_categories_list.dart';
 export './products_todays_special.dart';

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
-class SessionTitle extends StatelessWidget {
+class SectionTitle extends StatelessWidget {
   final String leftText;
   final String? rightText;
   final Function()? onTapRightText;
 
-  const SessionTitle({
+  const SectionTitle({
     super.key,
     required this.leftText,
     this.rightText,
