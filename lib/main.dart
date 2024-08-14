@@ -7,6 +7,8 @@ import 'package:challenge_bento/app.dart';
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
   
+  debugInvertOversizedImages = true; //TODO: REMOVE
+
   setupDependencies();
 
   runApp(const App());

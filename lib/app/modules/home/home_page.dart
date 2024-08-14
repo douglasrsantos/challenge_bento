@@ -47,11 +47,8 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: const CustomBottomAppBar(),
       body: PageView(
         controller: controller.pageController,
-        children: [
-          HomeScreen(
-            onTapOrderAgain: () {},
-            onTapLocalShop: () {},
-          ),
+        children: const [
+          HomeScreen(),
         ],
       ),
     );

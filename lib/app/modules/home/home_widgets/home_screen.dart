@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
-  final Function()? onTapOrderAgain;
-  final Function()? onTapLocalShop;
-
-  const HomeScreen({
-    super.key,
-    required this.onTapOrderAgain,
-    required this.onTapLocalShop,
-  });
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +12,8 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           InitialButtons(
-            onTapOrderAgain: onTapOrderAgain,
-            onTapLocalShop: onTapLocalShop,
+            onTapOrderAgain: () => context.go('/under-construction'),
+            onTapLocalShop: () => context.go('/under-construction'),
           ),
           const BannersList(),
           const BannerListIndicator(),
