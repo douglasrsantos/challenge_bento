@@ -6,11 +6,14 @@ class ImageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      itemCount: 3,
-      itemBuilder: (context, index) {
-        return Image.asset(AppImages.cabbage1);
-      },
+    return SizedBox(
+      height: MediaQuery.of(context).size.height*0.3,
+      child: PageView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return Image.asset(AppImages.cabbage1);
+        },
+      ),
     );
   }
 }

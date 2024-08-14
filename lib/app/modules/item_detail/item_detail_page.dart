@@ -16,12 +16,14 @@ class ItemDetailPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Column(
-            children: [
-              Expanded(
-                child: ImageList(),
-              ),
-            ],
+          Positioned.fill(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ImageList(),
+                TitleAndRating(),
+              ],
+            ),
           ),
           Positioned.fill(
             child: Align(
