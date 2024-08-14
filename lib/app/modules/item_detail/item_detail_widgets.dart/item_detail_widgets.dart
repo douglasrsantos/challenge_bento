@@ -1,0 +1,1 @@
+export './price_and_add_to_cart.dart';
