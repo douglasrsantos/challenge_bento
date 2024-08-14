@@ -23,6 +23,7 @@ class ItemDetailPage extends StatelessWidget {
                 ImageList(),
                 ListIndicator(),
                 TitleAndRating(),
+                CardProductCharacteristics(),
               ],
             ),
           ),

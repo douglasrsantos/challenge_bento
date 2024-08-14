@@ -46,6 +46,13 @@ class AppFonts {
     fontWeight: FontWeight.w900,
   );
 
+  ///TextStyle of product characteristics
+  static TextStyle productCharacteristics = GoogleFonts.nunito(
+    fontSize: 13,
+    color: AppColors.darkBlue,
+    fontWeight: FontWeight.w700,
+  );
+
   ///TextStyle of price and discount on product detail page
   static TextStyle priceAndDiscountTexts = GoogleFonts.nunito(
     fontSize: 16,
