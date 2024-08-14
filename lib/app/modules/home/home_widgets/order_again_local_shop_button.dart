@@ -43,8 +43,8 @@ class OrderAgainLocalShopButton extends StatelessWidget {
                 right: -15,
                 bottom: -20,
                 child: SizedBox(
-                  height: 100,
-                  width: 100,
+                  height: 90,
+                  width: 90,
                   child: Image.asset(imageAsset,
                   cacheHeight: 275,
                   cacheWidth: 275,

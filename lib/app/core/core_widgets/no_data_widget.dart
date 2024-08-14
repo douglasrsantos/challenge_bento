@@ -13,7 +13,11 @@ class NoDataWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(AppImages.underConstruction),
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: Image.asset(AppImages.underConstruction),
+            ),
             Text(
               'Under Construction!',
               style: AppFonts.bigText,
