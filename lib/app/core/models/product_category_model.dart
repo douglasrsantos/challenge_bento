@@ -5,11 +5,13 @@ class ProductCategoryModel {
   int id;
   String name;
   String image;
+  String colorCode;
 
   ProductCategoryModel({
     required this.id,
     required this.name,
     required this.image,
+    required this.colorCode,
   });
 
   Map<String, dynamic> toMap() {
@@ -17,6 +19,7 @@ class ProductCategoryModel {
       'id': id,
       'name': name,
       'image': image,
+      'colorCode': colorCode,
     };
 
     map.removeWhere((key, value) => value == null);
@@ -29,11 +32,13 @@ class ProductCategoryModel {
       id: map['id'] as int,
       name: map['name'] as String,
       image: map['image'] as String,
+      colorCode: map['colorCode'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory ProductCategoryModel.fromJson(String source) =>
-      ProductCategoryModel.forModel(json.decode(source) as Map<String, dynamic>);
+      ProductCategoryModel.forModel(
+          json.decode(source) as Map<String, dynamic>);
 }

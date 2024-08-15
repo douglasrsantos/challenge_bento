@@ -84,17 +84,20 @@
                 {
                     "id": 1,
                     "name": "Vegetarian",
-                    "image": "vegetarian"
+                    "image": "vegetarian",
+                    "colorCode": "F0F5DC"
                 },
                 {
                     "id": 2,
                     "name": "Halal Food",
-                    "image": "halal-food"
+                    "image": "halal-food",
+                    "colorCode": "FAF0DC"
                 },
                 {
                     "id": 3,
                     "name": "Gluten-free",
-                    "image": "gluten-free"
+                    "image": "gluten-free",
+                    "colorCode": "FCD6CA"
                 }
             ],
             "images": [
@@ -120,17 +123,20 @@
                 {
                     "id": 1,
                     "name": "Vegetarian",
-                    "image": "vegetarian"
+                    "image": "vegetarian",
+                    "colorCode": "C3F0C0"
                 },
                 {
                     "id": 2,
                     "name": "Halal Food",
-                    "image": "halal-food.webp"
+                    "image": "halal-food",
+                    "colorCode": "FAF0DC"
                 },
                 {
                     "id": 3,
                     "name": "Gluten-free",
-                    "image": "gluten-free"
+                    "image": "gluten-free",
+                    "colorCode": "FCD6CA"
                 }
             ],
             "images": [

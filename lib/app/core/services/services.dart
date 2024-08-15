@@ -6,3 +6,5 @@ export './category/category_service.dart';
 export './category/category_service_impl.dart';
 export './todays_special/todays_special_service.dart';
 export './todays_special/todays_special_service_impl.dart';
+export './product/product_service.dart';
+export './product/product_service_impl.dart';

@@ -1,8 +1,15 @@
-import 'package:challenge_bento/app/core/ui/ui.dart';
 import 'package:flutter/material.dart';
 
+import 'package:challenge_bento/app/core/models/models.dart';
+import 'package:challenge_bento/app/core/ui/ui.dart';
+
 class ImageList extends StatelessWidget {
-  const ImageList({super.key});
+  final List<ImageModel> images;
+
+  const ImageList({
+    super.key,
+    required this.images,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +18,11 @@ class ImageList extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.3,
         child: PageView.builder(
-          itemCount: 3,
+          itemCount: images.length,
           itemBuilder: (context, index) {
-            return Image.asset(AppImages.imagesMap['cabbage-1'] ?? '');
+            final imageModel = images[index];
+
+            return Image.asset(AppImages.imagesMap[imageModel.image] ?? '');
           },
         ),
       ),

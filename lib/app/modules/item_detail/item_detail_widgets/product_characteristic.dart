@@ -5,11 +5,13 @@ import 'package:challenge_bento/app/core/ui/ui.dart';
 class ProductCharacteristic extends StatelessWidget {
   final String imageAsset;
   final String text;
+  final String colorCode;
 
   const ProductCharacteristic({
     super.key,
     required this.imageAsset,
     required this.text,
+    required this.colorCode,
   });
 
   @override
@@ -23,7 +25,7 @@ class ProductCharacteristic extends StatelessWidget {
           width: 40,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: AppColors.vegetarianGreen,
+            color: Color(0xFF000000 + int.parse(colorCode, radix: 16)),
           ),
           child: Image.asset(
             imageAsset,
