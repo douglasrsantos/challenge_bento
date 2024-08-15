@@ -14,6 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  cherry_toast: ^1.11.0
   cupertino_icons: ^1.0.6
   flutter_launcher_icons: ^0.13.1
   flutter_mobx: ^2.2.1+1
@@ -39,6 +40,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - database/data.json
 
 flutter_launcher_icons:
   android: true
