@@ -8,10 +8,12 @@ import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart'
 
 class HomeScreen extends StatelessWidget {
   final List<OfferBannerModel> offerBanners;
+  final List<CategoryModel> categories;
 
   const HomeScreen({
     super.key,
     required this.offerBanners,
+    required this.categories,
   });
 
   @override
@@ -26,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           BannersList(offerBanners: offerBanners),
           const ListIndicator(),
           SectionTitle(leftText: AppLocalizations.of(context)!.categoryTitle),
-          const CategoriesList(),
+          CategoriesList(categories: categories),
           SectionTitle(
             leftText: AppLocalizations.of(context)!.todaysSpecialTitle,
             rightText: AppLocalizations.of(context)!.seeAll,

@@ -118,6 +118,22 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  late final _$categoriesAtom =
+      Atom(name: 'HomeStoreBase.categories', context: context);
+
+  @override
+  List<CategoryModel> get categories {
+    _$categoriesAtom.reportRead();
+    return super.categories;
+  }
+
+  @override
+  set categories(List<CategoryModel> value) {
+    _$categoriesAtom.reportWrite(value, super.categories, () {
+      super.categories = value;
+    });
+  }
+
   late final _$getUserDataAsyncAction =
       AsyncAction('HomeStoreBase.getUserData', context: context);
 
@@ -134,6 +150,14 @@ mixin _$HomeStore on HomeStoreBase, Store {
     return _$getOfferBannersAsyncAction.run(() => super.getOfferBanners());
   }
 
+  late final _$getCategoriesAsyncAction =
+      AsyncAction('HomeStoreBase.getCategories', context: context);
+
+  @override
+  Future<void> getCategories() {
+    return _$getCategoriesAsyncAction.run(() => super.getCategories());
+  }
+
   @override
   String toString() {
     return '''
@@ -143,6 +167,7 @@ isLoading: ${isLoading},
 currentPageIndex: ${currentPageIndex},
 user: ${user},
 offerBanners: ${offerBanners},
+categories: ${categories},
 hasError: ${hasError},
 hasSuccess: ${hasSuccess}
     ''';

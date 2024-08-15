@@ -106,7 +106,10 @@ class _HomePageState extends State<HomePage> {
           controller: widget.controller.pageController,
           onPageChanged: (index) => widget.controller.currentPageIndex = index,
           children: [
-            HomeScreen(offerBanners: controller.offerBanners),
+            HomeScreen(
+              offerBanners: controller.offerBanners,
+              categories: controller.categories,
+            ),
             const UnderConstructionPage(showAppBar: false),
             const UnderConstructionPage(showAppBar: false),
             const UnderConstructionPage(showAppBar: false),

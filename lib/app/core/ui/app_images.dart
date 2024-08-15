@@ -1,9 +1,14 @@
 class AppImages {
   static Map<String, String> imagesMap = {
     'avocado': 'assets/images/avocado.png',
+    'fish': 'assets/images/fish.png',
+    'fruits': 'assets/images/fruits.png',
+    'meat': 'assets/images/meat.png',
+    'milk': 'assets/images/milk.png',
     'pineapple': 'assets/images/pineapple.png',
     'shrimp': 'assets/images/shrimp.png',
     'user': 'assets/images/user.png',
+    'vegan': 'assets/images/vegan.png',
   };
 
   static const cabbage1 = 'assets/images/cabbage-1.png';
@@ -15,6 +20,5 @@ class AppImages {
   static const orange2 = 'assets/images/orange-2.png';
   static const orderAgain = 'assets/images/order-again.png';
   static const underConstruction = 'assets/images/under-construction.png';
-  static const veganCategory = 'assets/images/vegan.png';
   static const vegetarian = 'assets/images/vegetarian.png';
 }

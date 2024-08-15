@@ -12,15 +12,22 @@ void setupDependencies() {
       () => UserServiceImpl(userRepository: getIt<UserRepository>()));
   getIt.registerLazySingleton<UserRepository>(() => UserRepositoryImpl());
 
-  //Injecting offer banners dependencies
+  //Injecting offer banner dependencies
   getIt.registerLazySingleton<OfferBannerService>(() => OfferBannerServiceImpl(
       offerBannerRepository: getIt<OfferBannerRepository>()));
   getIt.registerLazySingleton<OfferBannerRepository>(
       () => OfferBannerRepositoryImpl());
 
+  //Injecting category dependencies
+  getIt.registerLazySingleton<CategoryService>(() =>
+      CategoryServiceImpl(categoryRepository: getIt<CategoryRepository>()));
+  getIt.registerLazySingleton<CategoryRepository>(
+      () => CategoryRepositoryImpl());
+
   //Injecting home controller dependencies
   getIt.registerSingleton<HomeStore>(HomeStore(
     userService: getIt<UserService>(),
     offerBannerService: getIt<OfferBannerService>(),
+    categoryService: getIt<CategoryService>(),
   ));
 }

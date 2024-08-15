@@ -27,7 +27,7 @@ class BannersList extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(
               left: index == 0 ? 24 : 0,
-              right: index == 3 - 1 ? 24 : 0,
+              right: index == offerBanners.length - 1 ? 24 : 0,
             ),
             child: ContentBannerList(
               onTap: () => context.push('/under-construction'),
