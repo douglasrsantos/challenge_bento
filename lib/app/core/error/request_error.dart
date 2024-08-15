@@ -1,0 +1,3 @@
+enum RequestError {
+  noData
+}

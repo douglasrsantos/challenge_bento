@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class ContentBannerList extends StatelessWidget {
   final Function()? onTap;
+  final OfferBannerModel offerBanner;
 
   const ContentBannerList({
     super.key,
     required this.onTap,
+    required this.offerBanner,
   });
 
   @override
@@ -19,7 +22,8 @@ class ContentBannerList extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: AppColors.cardAvocado,
+          color:
+              Color(0xFF000000 + int.parse(offerBanner.bannerColor, radix: 16)),
         ),
         child: Row(
           children: [
@@ -28,11 +32,11 @@ class ContentBannerList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Top deal !',
+                  offerBanner.title,
                   style: AppFonts.additionalInfoTexts,
                 ),
                 Text(
-                  'FRESH AVOCADO\nUP TO 15% OFF',
+                  offerBanner.subtitle,
                   style: AppFonts.emphasisHome,
                 ),
                 const SizedBox(height: 12),
@@ -56,7 +60,7 @@ class ContentBannerList extends StatelessWidget {
               ],
             ),
             Image.asset(
-              AppImages.avocado,
+              AppImages.imagesMap[offerBanner.image] ?? '',
               cacheHeight: 379,
               cacheWidth: 421,
             ),

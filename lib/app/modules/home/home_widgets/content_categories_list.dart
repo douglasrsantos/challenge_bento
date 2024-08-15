@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class ContentCategoriesList extends StatelessWidget {
-  final String text;
+  final CategoryModel category;
   final Function()? onTap;
 
   const ContentCategoriesList({
     super.key,
-    required this.text,
+    required this.category,
     required this.onTap,
   });
 
@@ -28,13 +29,13 @@ class ContentCategoriesList extends StatelessWidget {
             height: 70,
             width: 70,
             child: Image.asset(
-              AppImages.veganCategory,
+              AppImages.imagesMap[category.image] ?? '',
               cacheHeight: 148,
               cacheWidth: 148,
             ),
           ),
           Text(
-            text,
+            category.name,
             style: AppFonts.category,
           ),
         ],

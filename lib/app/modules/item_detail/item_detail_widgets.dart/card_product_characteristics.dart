@@ -17,19 +17,19 @@ class CardProductCharacteristics extends StatelessWidget {
           color: AppColors.cardCategoriesAndProdInfo,
           borderRadius: BorderRadius.circular(16),
         ),
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ProductCharacteristic(
-              imageAsset: AppImages.vegetarian,
+              imageAsset: AppImages.imagesMap['vegetarian'] ?? '',
               text: 'Vegetarian',
             ),
             ProductCharacteristic(
-              imageAsset: AppImages.halalFood,
+              imageAsset: AppImages.imagesMap['halal-food'] ?? '',
               text: 'Halal Food',
             ),
             ProductCharacteristic(
-              imageAsset: AppImages.glutenFree,
+              imageAsset: AppImages.imagesMap['gluten-free'] ?? '',
               text: 'Gluten-free',
             ),
           ],

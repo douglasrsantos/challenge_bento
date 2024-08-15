@@ -27,7 +27,7 @@ class UserModel {
     return map;
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.forModel(Map<String, dynamic> map) {
     return UserModel(
       id: map['id'] as int,
       type: map['type'] as String,
@@ -39,5 +39,5 @@ class UserModel {
   String toJson() => json.encode(toMap());
 
   factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      UserModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

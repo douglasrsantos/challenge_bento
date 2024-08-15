@@ -6,12 +6,14 @@ class OfferBannerModel {
   String title;
   String subtitle;
   String image;
+  String bannerColor;
 
   OfferBannerModel({
     required this.id,
     required this.title,
     required this.subtitle,
     required this.image,
+    required this.bannerColor,
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +22,7 @@ class OfferBannerModel {
       'title': title,
       'subtitle': subtitle,
       'image': image,
+      'bannerColor': bannerColor,
     };
 
     map.removeWhere((key, value) => value == null);
@@ -27,17 +30,18 @@ class OfferBannerModel {
     return map;
   }
 
-  factory OfferBannerModel.fromMap(Map<String, dynamic> map) {
+  factory OfferBannerModel.forModel(Map<String, dynamic> map) {
     return OfferBannerModel(
       id: map['id'] as int,
       title: map['title'] as String,
       subtitle: map['subtitle'] as String,
       image: map['image'] as String,
+      bannerColor: map['bannerColor'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory OfferBannerModel.fromJson(String source) =>
-      OfferBannerModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      OfferBannerModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

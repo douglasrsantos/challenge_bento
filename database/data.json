@@ -3,68 +3,71 @@
         "id": 1,
         "type": "Delivery",
         "name": "Bacangan, Sambit",
-        "image": "user.png"
+        "image": "user"
     },
     "offerBanners": [
         {
             "id": 1,
             "title": "Top deal !",
-            "subtitle": "FRESH AVOCADO UP TO 15% OFF",
-            "image": "avocado.png"
+            "subtitle": "FRESH AVOCADO\nUP TO 15% OFF",
+            "image": "avocado",
+            "bannerColor": "F0F5DC"
         },
         {
             "id": 2,
             "title": "Great offer !",
-            "subtitle": "PINEAPPLE 10% OFF",
-            "image": "pineapple.png"
+            "subtitle": "PINEAPPLE\n10% OFF",
+            "image": "pineapple",
+            "bannerColor": "FAF0DC"
         },
         {
             "id": 3,
             "title": "Enjoy !",
-            "subtitle": "SHRIMP WITH SPECIAL PRICE",
-            "image": "shrimp.png"
+            "subtitle": "SHRIMP WITH\nSPECIAL PRICE",
+            "image": "shrimp",
+            "bannerColor": "FCD6CA"
         }
     ],
     "categories": [
         {
             "id": 1,
             "name": "Vegan",
-            "image": "vegan.png"
+            "image": "vegan"
         },
         {
             "id": 2,
             "name": "Meat",
-            "image": "meat.png"
+            "image": "meat"
         },
         {
             "id": 3,
             "name": "Fruits",
-            "image": "fruits.png"
+            "image": "fruits"
         },
         {
             "id": 4,
             "name": "Milk",
-            "image": "milk.png"
+            "image": "milk"
         },
         {
             "id": 5,
             "name": "Fish",
-            "image": "fish.png"
+            "image": "fish"
         }
     ],
     "todaysSpecial": [
         {
             "id": 1,
-            "name": "orange",
-            "rating": 4.5,
-            "image": "orange-1.png",
+            "name": "Fresh Orange",
+            "rating": 4.6,
+            "image": "orange-1",
             "colorCode": "FAF0DC"
         },
         {
             "id": 2,
-            "name": "cabbage",
+            "name": "Organic Fresh Green Cabbage",
             "rating": 4.5,
-            "image": "cabbage-1.png",
+            "image": "cabbage-1",
             "colorCode": "E6FADC"
         }
     ],
@@ -81,17 +84,17 @@
                 {
                     "id": 1,
                     "name": "Vegetarian",
-                    "image": "vegetarian.png"
+                    "image": "vegetarian"
                 },
                 {
                     "id": 2,
                     "name": "Halal Food",
-                    "image": "halal-food.webp"
+                    "image": "halal-food"
                 },
                 {
                     "id": 3,
                     "name": "Gluten-free",
-                    "image": "gluten-free.png"
+                    "image": "gluten-free"
                 }
             ],
             "images": [
@@ -117,7 +120,7 @@
                 {
                     "id": 1,
                     "name": "Vegetarian",
-                    "image": "vegetarian.png"
+                    "image": "vegetarian"
                 },
                 {
                     "id": 2,
@@ -127,7 +130,7 @@
                 {
                     "id": 3,
                     "name": "Gluten-free",
-                    "image": "gluten-free.png"
+                    "image": "gluten-free"
                 }
             ],
             "images": [
