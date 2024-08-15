@@ -10,12 +10,16 @@ class HomeScreen extends StatelessWidget {
   final List<OfferBannerModel> offerBanners;
   final List<CategoryModel> categories;
   final List<TodaysSpecialModel> todaysSpecials;
+  final PageController pageController;
+  final int bannersCount;
 
   const HomeScreen({
     super.key,
     required this.offerBanners,
     required this.categories,
     required this.todaysSpecials,
+    required this.pageController,
+    required this.bannersCount,
   });
 
   @override
@@ -28,7 +32,10 @@ class HomeScreen extends StatelessWidget {
             onTapLocalShop: () => context.push('/under-construction'),
           ),
           BannersList(offerBanners: offerBanners),
-          const ListIndicator(),
+          ListIndicator(
+            count: 3,
+            pageController: pageController,
+          ),
           SectionTitle(leftText: AppLocalizations.of(context)!.categoryTitle),
           CategoriesList(categories: categories),
           SectionTitle(

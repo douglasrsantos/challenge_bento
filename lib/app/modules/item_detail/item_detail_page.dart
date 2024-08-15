@@ -73,12 +73,13 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ImageList(images: controller.product?.images ?? []),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ListIndicator(),
-                      ],
+                    ImageList(
+                      images: controller.product?.images ?? [],
+                      pageController: controller.imagePageController,
+                    ),
+                    ListIndicator(
+                      pageController: controller.imagePageController,
+                      count: controller.product?.images.length ?? 0,
                     ),
                     TitleAndRating(
                       title: controller.product?.name ?? '',

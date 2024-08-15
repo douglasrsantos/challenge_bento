@@ -5,10 +5,12 @@ import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class ImageList extends StatelessWidget {
   final List<ImageModel> images;
+  final PageController pageController;
 
   const ImageList({
     super.key,
     required this.images,
+    required this.pageController,
   });
 
   @override
@@ -18,6 +20,7 @@ class ImageList extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.3,
         child: PageView.builder(
+          controller: pageController,
           itemCount: images.length,
           itemBuilder: (context, index) {
             final imageModel = images[index];
