@@ -134,6 +134,22 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  late final _$todaysSpecialsAtom =
+      Atom(name: 'HomeStoreBase.todaysSpecials', context: context);
+
+  @override
+  List<TodaysSpecialModel> get todaysSpecials {
+    _$todaysSpecialsAtom.reportRead();
+    return super.todaysSpecials;
+  }
+
+  @override
+  set todaysSpecials(List<TodaysSpecialModel> value) {
+    _$todaysSpecialsAtom.reportWrite(value, super.todaysSpecials, () {
+      super.todaysSpecials = value;
+    });
+  }
+
   late final _$getUserDataAsyncAction =
       AsyncAction('HomeStoreBase.getUserData', context: context);
 
@@ -158,6 +174,14 @@ mixin _$HomeStore on HomeStoreBase, Store {
     return _$getCategoriesAsyncAction.run(() => super.getCategories());
   }
 
+  late final _$getTodaysSpecialsAsyncAction =
+      AsyncAction('HomeStoreBase.getTodaysSpecials', context: context);
+
+  @override
+  Future<void> getTodaysSpecials() {
+    return _$getTodaysSpecialsAsyncAction.run(() => super.getTodaysSpecials());
+  }
+
   @override
   String toString() {
     return '''
@@ -168,6 +192,7 @@ currentPageIndex: ${currentPageIndex},
 user: ${user},
 offerBanners: ${offerBanners},
 categories: ${categories},
+todaysSpecials: ${todaysSpecials},
 hasError: ${hasError},
 hasSuccess: ${hasSuccess}
     ''';

@@ -5,9 +5,9 @@ import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/repositories/repositories.dart';
 import 'package:challenge_bento/app/core/utils/utils.dart';
 
-class CategoryRepositoryImpl implements CategoryRepository {
+class TodaysSpecialRepositoryImpl implements TodaysSpecialRepository {
   @override
-  Future<List<CategoryModel>> getAllCategories() async {
+  Future<List<TodaysSpecialModel>> getAllTodaysSpecials() async {
     try {
       final jsonString = await AccessDataJson.getJson();
 
@@ -17,19 +17,20 @@ class CategoryRepositoryImpl implements CategoryRepository {
 
       final jsonData = jsonDecode(jsonString);
 
-      if (jsonData['categories'].isEmpty) {
+      if (jsonData['todaysSpecial'].isEmpty) {
         throw RequestError.noData;
       }
 
-      final categories = List.generate(
-        jsonData['categories'].length,
-        (index) => CategoryModel.forModel(jsonData['categories'][index]),
+      final todaysSpecial = List.generate(
+        jsonData['todaysSpecial'].length,
+        (index) =>
+            TodaysSpecialModel.forModel(jsonData['todaysSpecial'][index]),
       );
 
-      return categories;
+      return todaysSpecial;
     } catch (e) {
       if (e == RequestError.noData) {
-        throw 'Error getting list of categories';
+        throw "Error getting list of today's special";
       }
       throw e.toString();
     }

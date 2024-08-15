@@ -1,17 +1,19 @@
 import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class TodaySpecialModel {
+class TodaysSpecialModel {
   int id;
   String name;
   num rating;
   String image;
+  String colorCode;
 
-  TodaySpecialModel({
+  TodaysSpecialModel({
     required this.id,
     required this.name,
     required this.rating,
     required this.image,
+    required this.colorCode,
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +22,7 @@ class TodaySpecialModel {
       'name': name,
       'rating': rating,
       'image': image,
+      'colorCode': colorCode,
     };
 
     map.removeWhere((key, value) => value == null);
@@ -27,17 +30,18 @@ class TodaySpecialModel {
     return map;
   }
 
-  factory TodaySpecialModel.forModel(Map<String, dynamic> map) {
-    return TodaySpecialModel(
+  factory TodaysSpecialModel.forModel(Map<String, dynamic> map) {
+    return TodaysSpecialModel(
       id: map['id'] as int,
       name: map['name'] as String,
       rating: map['rating'] as num,
       image: map['image'] as String,
+      colorCode: map['colorCode'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory TodaySpecialModel.fromJson(String source) =>
-      TodaySpecialModel.forModel(json.decode(source) as Map<String, dynamic>);
+  factory TodaysSpecialModel.fromJson(String source) =>
+      TodaysSpecialModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

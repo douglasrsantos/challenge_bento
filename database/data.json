@@ -58,14 +58,14 @@
     "todaysSpecial": [
         {
             "id": 1,
-            "name": "orange",
-            "rating": 4.5,
+            "name": "Fresh Orange",
+            "rating": 4.6,
             "image": "orange-1",
             "colorCode": "FAF0DC"
         },
         {
             "id": 2,
-            "name": "cabbage",
+            "name": "Organic Fresh Green Cabbage",
             "rating": 4.5,
             "image": "cabbage-1",
             "colorCode": "E6FADC"

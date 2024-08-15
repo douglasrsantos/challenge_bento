@@ -24,10 +24,18 @@ void setupDependencies() {
   getIt.registerLazySingleton<CategoryRepository>(
       () => CategoryRepositoryImpl());
 
+  //Injecting today's specials dependencies
+  getIt.registerLazySingleton<TodaysSpecialService>(() =>
+      TodaysSpecialServiceImpl(
+          todaysSpecialRepository: getIt<TodaysSpecialRepository>()));
+  getIt.registerLazySingleton<TodaysSpecialRepository>(
+      () => TodaysSpecialRepositoryImpl());
+
   //Injecting home controller dependencies
   getIt.registerSingleton<HomeStore>(HomeStore(
     userService: getIt<UserService>(),
     offerBannerService: getIt<OfferBannerService>(),
     categoryService: getIt<CategoryService>(),
+    todaysSpecialService: getIt<TodaysSpecialService>(),
   ));
 }

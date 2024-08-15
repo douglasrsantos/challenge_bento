@@ -109,6 +109,7 @@ class _HomePageState extends State<HomePage> {
             HomeScreen(
               offerBanners: controller.offerBanners,
               categories: controller.categories,
+              todaysSpecials: controller.todaysSpecials,
             ),
             const UnderConstructionPage(showAppBar: false),
             const UnderConstructionPage(showAppBar: false),

@@ -13,11 +13,13 @@ abstract class HomeStoreBase with Store {
   final UserService userService;
   final OfferBannerService offerBannerService;
   final CategoryService categoryService;
+  final TodaysSpecialService todaysSpecialService;
 
   HomeStoreBase({
     required this.userService,
     required this.offerBannerService,
     required this.categoryService,
+    required this.todaysSpecialService,
   });
 
   final pageController = PageController();
@@ -49,6 +51,9 @@ abstract class HomeStoreBase with Store {
   @observable
   List<CategoryModel> categories = [];
 
+  @observable
+  List<TodaysSpecialModel> todaysSpecials = [];
+
   void init() async {
     isLoading = true;
     infoErrorMessage = null;
@@ -56,6 +61,7 @@ abstract class HomeStoreBase with Store {
       getUserData(),
       getOfferBanners(),
       getCategories(),
+      getTodaysSpecials(),
     ]);
     isLoading = false;
   }
@@ -91,6 +97,18 @@ abstract class HomeStoreBase with Store {
       final result = await categoryService.getAllCategories();
 
       categories = result;
+    } catch (e) {
+      infoErrorMessage = e.toString();
+    }
+  }
+
+  ///Get today's specials
+  @action
+  Future<void> getTodaysSpecials() async {
+    try {
+      final result = await todaysSpecialService.getAllTodaysSpecials();
+
+      todaysSpecials = result;
     } catch (e) {
       infoErrorMessage = e.toString();
     }

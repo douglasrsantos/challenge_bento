@@ -9,11 +9,11 @@ class ImageList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height*0.3,
+        height: MediaQuery.of(context).size.height * 0.3,
         child: PageView.builder(
           itemCount: 3,
           itemBuilder: (context, index) {
-            return Image.asset(AppImages.cabbage1);
+            return Image.asset(AppImages.imagesMap['cabbage-1'] ?? '');
           },
         ),
       ),

@@ -9,11 +9,13 @@ import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart'
 class HomeScreen extends StatelessWidget {
   final List<OfferBannerModel> offerBanners;
   final List<CategoryModel> categories;
+  final List<TodaysSpecialModel> todaysSpecials;
 
   const HomeScreen({
     super.key,
     required this.offerBanners,
     required this.categories,
+    required this.todaysSpecials,
   });
 
   @override
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             rightText: AppLocalizations.of(context)!.seeAll,
             onTapRightText: () => context.push('/under-construction'),
           ),
-          const ProductsTodaysSpecial()
+          ProductsTodaysSpecial(todaysSpecials: todaysSpecials),
         ],
       ),
     );
