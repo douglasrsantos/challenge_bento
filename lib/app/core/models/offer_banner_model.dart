@@ -27,7 +27,7 @@ class OfferBannerModel {
     return map;
   }
 
-  factory OfferBannerModel.fromMap(Map<String, dynamic> map) {
+  factory OfferBannerModel.forModel(Map<String, dynamic> map) {
     return OfferBannerModel(
       id: map['id'] as int,
       title: map['title'] as String,
@@ -39,5 +39,5 @@ class OfferBannerModel {
   String toJson() => json.encode(toMap());
 
   factory OfferBannerModel.fromJson(String source) =>
-      OfferBannerModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      OfferBannerModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

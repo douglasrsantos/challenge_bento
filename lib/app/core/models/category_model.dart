@@ -24,7 +24,7 @@ class CategoryModel {
     return map;
   }
 
-  factory CategoryModel.fromMap(Map<String, dynamic> map) {
+  factory CategoryModel.forModel(Map<String, dynamic> map) {
     return CategoryModel(
       id: map['id'] as int,
       name: map['name'] as String,
@@ -35,5 +35,5 @@ class CategoryModel {
   String toJson() => json.encode(toMap());
 
   factory CategoryModel.fromJson(String source) =>
-      CategoryModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      CategoryModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

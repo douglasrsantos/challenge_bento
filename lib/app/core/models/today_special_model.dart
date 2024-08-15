@@ -27,7 +27,7 @@ class TodaySpecialModel {
     return map;
   }
 
-  factory TodaySpecialModel.fromMap(Map<String, dynamic> map) {
+  factory TodaySpecialModel.forModel(Map<String, dynamic> map) {
     return TodaySpecialModel(
       id: map['id'] as int,
       name: map['name'] as String,
@@ -39,5 +39,5 @@ class TodaySpecialModel {
   String toJson() => json.encode(toMap());
 
   factory TodaySpecialModel.fromJson(String source) =>
-      TodaySpecialModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      TodaySpecialModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

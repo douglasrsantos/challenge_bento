@@ -24,7 +24,7 @@ class ImageModel {
     return map;
   }
 
-  factory ImageModel.fromMap(Map<String, dynamic> map) {
+  factory ImageModel.forModel(Map<String, dynamic> map) {
     return ImageModel(
       id: map['id'] as int,
       name: map['name'] as String,
@@ -35,5 +35,5 @@ class ImageModel {
   String toJson() => json.encode(toMap());
 
   factory ImageModel.fromJson(String source) =>
-      ImageModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      ImageModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

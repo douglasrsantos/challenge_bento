@@ -21,7 +21,7 @@ class UserRepositoryImpl implements UserRepository {
         throw RequestError.noData;
       }
 
-      return UserModel.fromMap(jsonData['user']);
+      return UserModel.forModel(jsonData['user']);
     } catch (e) {
       if (e == RequestError.noData) {
         throw 'Error getting user data';

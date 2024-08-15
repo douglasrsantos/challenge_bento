@@ -44,7 +44,7 @@ class ProductModel {
     return map;
   }
 
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
+  factory ProductModel.forModel(Map<String, dynamic> map) {
     return ProductModel(
       id: map['id'] as int,
       name: map['name'] as String,
@@ -55,12 +55,12 @@ class ProductModel {
       discountPercent: map['discountPercent'] as num,
       productCategories: List<ProductCategoryModel>.from(
         (map['productCategories'] as List<int>).map<ProductCategoryModel>(
-          (x) => ProductCategoryModel.fromMap(x as Map<String, dynamic>),
+          (x) => ProductCategoryModel.forModel(x as Map<String, dynamic>),
         ),
       ),
       images: List<ImageModel>.from(
         (map['images'] as List<int>).map<ImageModel>(
-          (x) => ImageModel.fromMap(x as Map<String, dynamic>),
+          (x) => ImageModel.forModel(x as Map<String, dynamic>),
         ),
       ),
     );
@@ -69,5 +69,5 @@ class ProductModel {
   String toJson() => json.encode(toMap());
 
   factory ProductModel.fromJson(String source) =>
-      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      ProductModel.forModel(json.decode(source) as Map<String, dynamic>);
 }
