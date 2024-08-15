@@ -6,11 +6,13 @@
     "categoryTitle": "Shop by category",
     "todaysSpecialTitle": "Today's Special",
     "seeAll": "See all",
-    "orderAgain": "ORDER AGAIN",
-    "localShop": "LOCAL SHOP",
+    "orderAgain": "ORDER\nAGAIN",
+    "localShop": "LOCAL\nSHOP",
     "shopNow": "Shop Now",
     "noDataTitle": "Under Construction!",
     "noDataSubtitle": "Soon we will have incredible news for you!",
     "price": "Price",
-    "addToCart": "Add to Cart"
+    "addToCart": "Add to Cart",
+    "details": "Details",
+    "shop": "Shop: {shopName}"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
@@ -40,7 +41,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       : AppColors.greenButtons.withOpacity(0.5),
                 ),
                 Text(
-                  'Home',
+                  AppLocalizations.of(context)!.home,
                   style: currentIndex == 0
                       ? AppFonts.productDescription
                           .copyWith(color: AppColors.greenButtons)
@@ -62,7 +63,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       : AppColors.greenButtons.withOpacity(0.5),
                 ),
                 Text(
-                  'Deals',
+                  AppLocalizations.of(context)!.deals,
                   style: currentIndex == 1
                       ? AppFonts.productDescription
                           .copyWith(color: AppColors.greenButtons)
@@ -85,7 +86,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       : AppColors.greenButtons.withOpacity(0.5),
                 ),
                 Text(
-                  'Cart',
+                  AppLocalizations.of(context)!.cart,
                   style: currentIndex == 2
                       ? AppFonts.productDescription
                           .copyWith(color: AppColors.greenButtons)
@@ -107,7 +108,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       : AppColors.greenButtons.withOpacity(0.5),
                 ),
                 Text(
-                  'Account',
+                  AppLocalizations.of(context)!.account,
                   style: currentIndex == 3
                       ? AppFonts.productDescription
                           .copyWith(color: AppColors.greenButtons)

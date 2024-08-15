@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
@@ -19,13 +20,13 @@ class NoDataWidget extends StatelessWidget {
               child: Image.asset(AppImages.underConstruction),
             ),
             Text(
-              'Under Construction!',
+              AppLocalizations.of(context)!.noDataTitle,
               style: AppFonts.bigText,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
-              'Soon we will have incredible news for you!',
+              AppLocalizations.of(context)!.noDataSubtitle,
               style: AppFonts.emphasisHome,
               textAlign: TextAlign.center,
             ),

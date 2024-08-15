@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
@@ -10,7 +11,7 @@ class ShopText extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Text(
-        'Shop: Alisha Mart',
+        AppLocalizations.of(context)!.shop('Alisha Mart'),
         style: AppFonts.additionalInfoTexts.copyWith(fontSize: 14),
       ),
     );

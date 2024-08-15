@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
@@ -14,7 +15,7 @@ class ProductDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Details',
+            AppLocalizations.of(context)!.details,
             style: AppFonts.secondaryTexts,
           ),
           Text(
