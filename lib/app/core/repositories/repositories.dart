@@ -6,3 +6,5 @@ export './category/category_repository.dart';
 export './category/category_repository_impl.dart';
 export './todays_special/todays_special_repository.dart';
 export './todays_special/todays_special_repository_impl.dart';
+export './product/product_repository.dart';
+export './product/product_repository_impl.dart';

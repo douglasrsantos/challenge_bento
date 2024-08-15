@@ -5,7 +5,14 @@ import 'package:challenge_bento/app/core/ui/ui.dart';
 import 'package:go_router/go_router.dart';
 
 class PriceAndAddToCart extends StatelessWidget {
-  const PriceAndAddToCart({super.key});
+  final String finalPrice;
+  final String priceWithoutDiscount;
+
+  const PriceAndAddToCart({
+    super.key,
+    required this.finalPrice,
+    required this.priceWithoutDiscount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +46,12 @@ class PriceAndAddToCart extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      '\$6.90',
+                      '\$$finalPrice',
                       style: AppFonts.bigText,
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      '\$8.15',
+                      '\$$priceWithoutDiscount',
                       style: AppFonts.priceAndDiscountTexts.copyWith(
                         decoration: TextDecoration.lineThrough,
                         decorationColor: AppColors.darkBlue.withOpacity(0.3),

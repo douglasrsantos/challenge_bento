@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/ui/ui.dart';
-import 'package:challenge_bento/app/modules/item_detail/item_detail_widgets.dart/item_detail_widgets.dart';
+import 'package:challenge_bento/app/modules/item_detail/item_detail_widgets/item_detail_widgets.dart';
 
 class CardProductCharacteristics extends StatelessWidget {
-  const CardProductCharacteristics({super.key});
+  final List<ProductCategoryModel> productCategories;
+
+  const CardProductCharacteristics({
+    super.key,
+    required this.productCategories,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +25,13 @@ class CardProductCharacteristics extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ProductCharacteristic(
-              imageAsset: AppImages.imagesMap['vegetarian'] ?? '',
-              text: 'Vegetarian',
-            ),
-            ProductCharacteristic(
-              imageAsset: AppImages.imagesMap['halal-food'] ?? '',
-              text: 'Halal Food',
-            ),
-            ProductCharacteristic(
-              imageAsset: AppImages.imagesMap['gluten-free'] ?? '',
-              text: 'Gluten-free',
-            ),
-          ],
+          children: productCategories
+              .map((e) => ProductCharacteristic(
+                    imageAsset: AppImages.imagesMap[e.image] ?? '',
+                    text: e.name,
+                    colorCode: e.colorCode,
+                  ))
+              .toList(),
         ),
       ),
     );

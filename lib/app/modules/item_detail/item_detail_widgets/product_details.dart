@@ -4,7 +4,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+  final String productDetails;
+
+  const ProductDetails({
+    super.key,
+    required this.productDetails,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,7 @@ class ProductDetails extends StatelessWidget {
             style: AppFonts.secondaryTexts,
           ),
           Text(
-            'ore commonly known as green cabbage, the cannonball cabbage is one of the most popular cabbage varieties. It is so named for the way its leaves wound tightly over one.',
+            productDetails,
             style: AppFonts.productDescription,
           ),
         ],

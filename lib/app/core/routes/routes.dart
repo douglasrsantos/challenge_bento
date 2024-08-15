@@ -17,9 +17,13 @@ final routes = GoRouter(
       },
     ),
     GoRoute(
-      path: '/item-detail',
+      path: '/item-detail/:id',
       builder: (context, state) {
-        return const ItemDetailPage();
+        final String id = state.pathParameters['id']!;
+        return ItemDetailPage(
+          id: id,
+          controller: getIt<ItemDetailStore>(),
+        );
       },
     ),
     GoRoute(

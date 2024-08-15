@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:challenge_bento/app/core/repositories/repositories.dart';
 import 'package:challenge_bento/app/core/services/services.dart';
 import 'package:challenge_bento/app/modules/home/home.dart';
+import 'package:challenge_bento/app/modules/item_detail/item_detail.dart';
 
 final getIt = GetIt.instance;
 
@@ -31,11 +32,21 @@ void setupDependencies() {
   getIt.registerLazySingleton<TodaysSpecialRepository>(
       () => TodaysSpecialRepositoryImpl());
 
+//Injecting products dependencies
+  getIt.registerLazySingleton<ProductService>(
+      () => ProductServiceImpl(productRepository: getIt<ProductRepository>()));
+  getIt.registerLazySingleton<ProductRepository>(() => ProductRepositoryImpl());
+
   //Injecting home controller dependencies
   getIt.registerSingleton<HomeStore>(HomeStore(
     userService: getIt<UserService>(),
     offerBannerService: getIt<OfferBannerService>(),
     categoryService: getIt<CategoryService>(),
     todaysSpecialService: getIt<TodaysSpecialService>(),
+  ));
+
+  //Injecting item detail controller dependencies
+  getIt.registerSingleton<ItemDetailStore>(ItemDetailStore(
+    productService: getIt<ProductService>(),
   ));
 }

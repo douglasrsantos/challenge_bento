@@ -54,12 +54,12 @@ class ProductModel {
       price: map['price'] as num,
       discountPercent: map['discountPercent'] as num,
       productCategories: List<ProductCategoryModel>.from(
-        (map['productCategories'] as List<int>).map<ProductCategoryModel>(
+        (map['productCategories'] as List).map<ProductCategoryModel>(
           (x) => ProductCategoryModel.forModel(x as Map<String, dynamic>),
         ),
       ),
       images: List<ImageModel>.from(
-        (map['images'] as List<int>).map<ImageModel>(
+        (map['images'] as List).map<ImageModel>(
           (x) => ImageModel.forModel(x as Map<String, dynamic>),
         ),
       ),

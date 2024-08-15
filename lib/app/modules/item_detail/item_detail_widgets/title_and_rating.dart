@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class TitleAndRating extends StatelessWidget {
-  const TitleAndRating({super.key});
+  final String title;
+  final String rating;
+
+  const TitleAndRating({
+    super.key,
+    required this.title,
+    required this.rating,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class TitleAndRating extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              'Organic Fresh Green Cabbage',
+              title,
               style: AppFonts.bigText.copyWith(height: 1.1),
             ),
           ),
@@ -40,7 +47,7 @@ class TitleAndRating extends StatelessWidget {
                     color: AppColors.ratingStar,
                   ),
                   Text(
-                    '4.5',
+                    rating,
                     style: AppFonts.emphasisHome,
                   ),
                 ],

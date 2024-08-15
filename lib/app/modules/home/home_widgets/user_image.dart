@@ -23,7 +23,7 @@ class UserImage extends StatelessWidget {
           width: 40,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: AppColors.vegetarianGreen,
+            color: AppColors.userImageBackground,
           ),
           padding: const EdgeInsets.all(6),
           child: Image.asset(
