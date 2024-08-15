@@ -72,6 +72,22 @@ mixin _$ItemDetailStore on ItemDetailStoreBase, Store {
     });
   }
 
+  late final _$isFavoriteAtom =
+      Atom(name: 'ItemDetailStoreBase.isFavorite', context: context);
+
+  @override
+  bool get isFavorite {
+    _$isFavoriteAtom.reportRead();
+    return super.isFavorite;
+  }
+
+  @override
+  set isFavorite(bool value) {
+    _$isFavoriteAtom.reportWrite(value, super.isFavorite, () {
+      super.isFavorite = value;
+    });
+  }
+
   late final _$productAtom =
       Atom(name: 'ItemDetailStoreBase.product', context: context);
 
@@ -96,12 +112,27 @@ mixin _$ItemDetailStore on ItemDetailStoreBase, Store {
     return _$getProductAsyncAction.run(() => super.getProduct(id));
   }
 
+  late final _$ItemDetailStoreBaseActionController =
+      ActionController(name: 'ItemDetailStoreBase', context: context);
+
+  @override
+  void toggleIsFavorite() {
+    final _$actionInfo = _$ItemDetailStoreBaseActionController.startAction(
+        name: 'ItemDetailStoreBase.toggleIsFavorite');
+    try {
+      return super.toggleIsFavorite();
+    } finally {
+      _$ItemDetailStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 infoErrorMessage: ${infoErrorMessage},
 infoSuccessMessage: ${infoSuccessMessage},
 isLoading: ${isLoading},
+isFavorite: ${isFavorite},
 product: ${product},
 hasError: ${hasError},
 hasSuccess: ${hasSuccess}

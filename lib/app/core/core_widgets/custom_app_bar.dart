@@ -1,16 +1,21 @@
-import 'package:challenge_bento/app/core/ui/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
 class CustomAppBar extends AppBar {
   final bool showFavoriteIcon;
+  final bool isFavorite;
+  final Widget? icon;
   final Function()? onTapArrowBack;
+  final Function()? onTapFavorite;
 
   CustomAppBar({
     super.key,
     required this.onTapArrowBack,
     this.showFavoriteIcon = false,
+    this.isFavorite = false,
+    this.icon,
+    this.onTapFavorite,
   }) : super(
           leading: GestureDetector(
             onTap: onTapArrowBack,
@@ -33,16 +38,16 @@ class CustomAppBar extends AppBar {
             if (showFavoriteIcon)
               Padding(
                 padding: const EdgeInsets.only(right: 24),
-                child: Container(
-                  height: 42,
-                  width: 42,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.cardCategoriesAndProdInfo,
-                  ),
-                  child: Icon(
-                    Icons.favorite_border,
-                    color: AppColors.darkBlue,
+                child: GestureDetector(
+                  onTap: onTapFavorite,
+                  child: Container(
+                    height: 42,
+                    width: 42,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.cardCategoriesAndProdInfo,
+                    ),
+                    child: icon,
                   ),
                 ),
               ),
