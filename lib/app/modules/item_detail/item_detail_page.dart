@@ -48,7 +48,17 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
     return Scaffold(
       appBar: CustomAppBar(
         onTapArrowBack: () => context.pop(),
+        onTapFavorite: () => controller.toggleIsFavorite(),
+        isFavorite: controller.isFavorite,
         showFavoriteIcon: true,
+        icon: Observer(builder: (_) {
+          return Icon(
+            controller.isFavorite
+                ? Icons.favorite_outlined
+                : Icons.favorite_border,
+            color: AppColors.darkBlue,
+          );
+        }),
       ),
       body: Observer(builder: (_) {
         if (controller.isLoading) {

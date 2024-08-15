@@ -31,6 +31,9 @@ abstract class ItemDetailStoreBase with Store {
   bool isLoading = false;
 
   @observable
+  bool isFavorite = false;
+
+  @observable
   ProductModel? product;
 
   void init({required String id}) async {
@@ -61,5 +64,10 @@ abstract class ItemDetailStoreBase with Store {
     }
 
     return '0.00';
+  }
+
+  @action
+  void toggleIsFavorite() {
+    isFavorite = !isFavorite;
   }
 }
