@@ -9,20 +9,23 @@
         {
             "id": 1,
             "title": "Top deal !",
-            "subtitle": "FRESH AVOCADO UP TO 15% OFF",
-            "image": "avocado"
+            "subtitle": "FRESH AVOCADO\nUP TO 15% OFF",
+            "image": "avocado",
+            "bannerColor": "F0F5DC"
         },
         {
             "id": 2,
             "title": "Great offer !",
-            "subtitle": "PINEAPPLE 10% OFF",
-            "image": "pineapple"
+            "subtitle": "PINEAPPLE\n10% OFF",
+            "image": "pineapple",
+            "bannerColor": "FAF0DC"
         },
         {
             "id": 3,
             "title": "Enjoy !",
-            "subtitle": "SHRIMP WITH SPECIAL PRICE",
-            "image": "shrimp"
+            "subtitle": "SHRIMP WITH\nSPECIAL PRICE",
+            "image": "shrimp",
+            "bannerColor": "FCD6CA"
         }
     ],
     "categories": [

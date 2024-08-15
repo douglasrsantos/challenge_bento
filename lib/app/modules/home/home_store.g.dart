@@ -102,12 +102,36 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  late final _$offerBannersAtom =
+      Atom(name: 'HomeStoreBase.offerBanners', context: context);
+
+  @override
+  List<OfferBannerModel> get offerBanners {
+    _$offerBannersAtom.reportRead();
+    return super.offerBanners;
+  }
+
+  @override
+  set offerBanners(List<OfferBannerModel> value) {
+    _$offerBannersAtom.reportWrite(value, super.offerBanners, () {
+      super.offerBanners = value;
+    });
+  }
+
   late final _$getUserDataAsyncAction =
       AsyncAction('HomeStoreBase.getUserData', context: context);
 
   @override
   Future<void> getUserData() {
     return _$getUserDataAsyncAction.run(() => super.getUserData());
+  }
+
+  late final _$getOfferBannersAsyncAction =
+      AsyncAction('HomeStoreBase.getOfferBanners', context: context);
+
+  @override
+  Future<void> getOfferBanners() {
+    return _$getOfferBannersAsyncAction.run(() => super.getOfferBanners());
   }
 
   @override
@@ -118,6 +142,7 @@ infoSuccessMessage: ${infoSuccessMessage},
 isLoading: ${isLoading},
 currentPageIndex: ${currentPageIndex},
 user: ${user},
+offerBanners: ${offerBanners},
 hasError: ${hasError},
 hasSuccess: ${hasSuccess}
     ''';

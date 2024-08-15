@@ -1,8 +1,11 @@
 class AppImages {
-  static const imagesMap = {
+  static Map<String, String> imagesMap = {
+    'avocado': 'assets/images/avocado.png',
+    'pineapple': 'assets/images/pineapple.png',
+    'shrimp': 'assets/images/shrimp.png',
     'user': 'assets/images/user.png',
   };
-  static const avocado = 'assets/images/avocado.png';
+
   static const cabbage1 = 'assets/images/cabbage-1.png';
   static const cabbage2 = 'assets/images/cabbage-2.png';
   static const glutenFree = 'assets/images/gluten-free.png';

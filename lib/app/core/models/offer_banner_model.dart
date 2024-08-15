@@ -6,12 +6,14 @@ class OfferBannerModel {
   String title;
   String subtitle;
   String image;
+  String bannerColor;
 
   OfferBannerModel({
     required this.id,
     required this.title,
     required this.subtitle,
     required this.image,
+    required this.bannerColor,
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +22,7 @@ class OfferBannerModel {
       'title': title,
       'subtitle': subtitle,
       'image': image,
+      'bannerColor': bannerColor,
     };
 
     map.removeWhere((key, value) => value == null);
@@ -33,6 +36,7 @@ class OfferBannerModel {
       title: map['title'] as String,
       subtitle: map['subtitle'] as String,
       image: map['image'] as String,
+      bannerColor: map['bannerColor'] as String,
     );
   }
 

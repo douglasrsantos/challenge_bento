@@ -97,16 +97,22 @@ class _HomePageState extends State<HomePage> {
           },
         );
       }),
-      body: PageView(
-        controller: widget.controller.pageController,
-        onPageChanged: (index) => widget.controller.currentPageIndex = index,
-        children: const [
-          HomeScreen(),
-          UnderConstructionPage(showAppBar: false),
-          UnderConstructionPage(showAppBar: false),
-          UnderConstructionPage(showAppBar: false),
-        ],
-      ),
+      body: Observer(builder: (_) {
+        if (controller.isLoading) {
+          return const Loading();
+        }
+
+        return PageView(
+          controller: widget.controller.pageController,
+          onPageChanged: (index) => widget.controller.currentPageIndex = index,
+          children: [
+            HomeScreen(offerBanners: controller.offerBanners),
+            const UnderConstructionPage(showAppBar: false),
+            const UnderConstructionPage(showAppBar: false),
+            const UnderConstructionPage(showAppBar: false),
+          ],
+        );
+      }),
     );
   }
 }

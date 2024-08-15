@@ -11,8 +11,12 @@ class HomeStore = HomeStoreBase with _$HomeStore;
 
 abstract class HomeStoreBase with Store {
   final UserService userService;
+  final OfferBannerService offerBannerService;
 
-  HomeStoreBase({required this.userService});
+  HomeStoreBase({
+    required this.userService,
+    required this.offerBannerService,
+  });
 
   final pageController = PageController();
 
@@ -37,20 +41,38 @@ abstract class HomeStoreBase with Store {
   @observable
   UserModel? user;
 
+  @observable
+  List<OfferBannerModel> offerBanners = [];
+
   void init() async {
     isLoading = true;
+    infoErrorMessage = null;
     await Future.wait([
       getUserData(),
+      getOfferBanners(),
     ]);
     isLoading = false;
   }
 
+  ///Get user data
   @action
   Future<void> getUserData() async {
     try {
       final result = await userService.getUser();
 
       user = result;
+    } catch (e) {
+      infoErrorMessage = e.toString();
+    }
+  }
+
+  ///Get all offer banners
+  @action
+  Future<void> getOfferBanners() async {
+    try {
+      final result = await offerBannerService.getAllOfferBanners();
+
+      offerBanners = result;
     } catch (e) {
       infoErrorMessage = e.toString();
     }

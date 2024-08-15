@@ -7,9 +7,20 @@ import 'package:challenge_bento/app/modules/home/home.dart';
 final getIt = GetIt.instance;
 
 void setupDependencies() {
+  //Injecting user dependencies
   getIt.registerLazySingleton<UserService>(
       () => UserServiceImpl(userRepository: getIt<UserRepository>()));
   getIt.registerLazySingleton<UserRepository>(() => UserRepositoryImpl());
-  getIt.registerSingleton<HomeStore>(
-      HomeStore(userService: getIt<UserService>()));
+
+  //Injecting offer banners dependencies
+  getIt.registerLazySingleton<OfferBannerService>(() => OfferBannerServiceImpl(
+      offerBannerRepository: getIt<OfferBannerRepository>()));
+  getIt.registerLazySingleton<OfferBannerRepository>(
+      () => OfferBannerRepositoryImpl());
+
+  //Injecting home controller dependencies
+  getIt.registerSingleton<HomeStore>(HomeStore(
+    userService: getIt<UserService>(),
+    offerBannerService: getIt<OfferBannerService>(),
+  ));
 }

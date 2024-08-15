@@ -3,10 +3,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:challenge_bento/app/core/core_widgets/core_widgets.dart';
+import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final List<OfferBannerModel> offerBanners;
+
+  const HomeScreen({
+    super.key,
+    required this.offerBanners,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             onTapOrderAgain: () => context.push('/under-construction'),
             onTapLocalShop: () => context.push('/under-construction'),
           ),
-          const BannersList(),
+          BannersList(offerBanners: offerBanners),
           const ListIndicator(),
           SectionTitle(leftText: AppLocalizations.of(context)!.categoryTitle),
           const CategoriesList(),
