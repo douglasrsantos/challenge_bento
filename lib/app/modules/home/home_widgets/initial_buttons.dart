@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 import 'package:challenge_bento/app/modules/home/home_widgets/home_widgets.dart';
@@ -20,13 +21,13 @@ class InitialButtons extends StatelessWidget {
       child: Row(
         children: [
           OrderAgainLocalShopButton(
-            text: 'ORDER\nAGAIN',
+            text: AppLocalizations.of(context)!.orderAgain,
             imageAsset: AppImages.orderAgain,
             onTap: onTapOrderAgain,
           ),
           const Spacer(),
           OrderAgainLocalShopButton(
-            text: 'LOCAL\nSHOP',
+            text: AppLocalizations.of(context)!.localShop,
             imageAsset: AppImages.localShop,
             onTap: onTapLocalShop,
           ),

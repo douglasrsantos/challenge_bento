@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 import 'package:go_router/go_router.dart';
@@ -31,7 +32,7 @@ class PriceAndAddToCart extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Price',
+                  AppLocalizations.of(context)!.price,
                   style: AppFonts.priceAndDiscountTexts,
                 ),
                 Row(
@@ -60,7 +61,7 @@ class PriceAndAddToCart extends StatelessWidget {
                 backgroundColor: AppColors.greenButtons,
               ),
               child: Text(
-                'Add to Cart',
+                AppLocalizations.of(context)!.addToCart,
                 style: AppFonts.addToCart,
               ),
             )

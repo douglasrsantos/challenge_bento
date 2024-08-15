@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:challenge_bento/app/core/ui/ui.dart';
 
@@ -46,7 +47,7 @@ class ContentBannerList extends StatelessWidget {
                       horizontal: 16,
                     ),
                     child: Text(
-                      'Shop Now',
+                      AppLocalizations.of(context)!.shopNow,
                       style: AppFonts.secondaryTexts
                           .copyWith(color: AppColors.greenButtons),
                     ),
