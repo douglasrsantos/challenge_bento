@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:challenge_bento/app/core/models/models.dart';
@@ -14,6 +15,8 @@ abstract class ItemDetailStoreBase with Store {
   ItemDetailStoreBase({
     required this.productService,
   });
+
+  final imagePageController = PageController();
 
   @observable
   String? infoErrorMessage;

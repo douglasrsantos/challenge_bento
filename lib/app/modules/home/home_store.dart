@@ -23,6 +23,7 @@ abstract class HomeStoreBase with Store {
   });
 
   final pageController = PageController();
+  final bannersPageController = PageController();
 
   @observable
   String? infoErrorMessage;
