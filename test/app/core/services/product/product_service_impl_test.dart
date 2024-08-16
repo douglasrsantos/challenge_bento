@@ -26,7 +26,7 @@ void main() {
       );
 
   //simulates getProductById request from productServiceImpl
-  PostExpectation mockRequest(int id) =>
+  PostExpectation mockRequest(int? id) =>
       when(productServiceImpl.getProductById(productId: id));
 
   //mock of requests who return success
@@ -35,12 +35,12 @@ void main() {
   }
 
   //mock of requests who return errors
-  void mockRequestError({required int id, required dynamic error}) {
+  void mockRequestError({required int? id, required dynamic error}) {
     mockRequest(id).thenThrow(error);
   }
 
   //method who returns function getProductById
-  Future<ProductModel?> getProduct(int id) async {
+  Future<ProductModel?> getProduct(int? id) async {
     return await productServiceImpl.getProductById(productId: id);
   }
 
@@ -55,5 +55,12 @@ void main() {
     final user = await getProduct(1);
 
     expect(user!.id, mockValidProductModel().id);
+  });
+
+  test('should return error no data if json file is empty', () async {
+    when(productServiceImpl.getProductById(productId: anyNamed('productId')))
+        .thenThrow(RequestError.noData);
+
+    expect(() async => await getProduct(1), throwsA(RequestError.noData));
   });
 }
