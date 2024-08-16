@@ -50,11 +50,20 @@ void main() {
     productRepositoryImpl = MockProductRepositoryImpl();
   });
 
-  test("should return a list of product model", () async {
+  test("should return a product model list", () async {
     mockRequestSuccess(mockValidProductModelList());
 
     final products = await getProducts();
 
     expect(products.length, 1);
+  });
+
+  test('should return empty list if request success, but no have data',
+      () async {
+    mockRequestSuccess([]);
+
+    final products = await getProducts();
+
+    expect(products.isEmpty, true);
   });
 }
