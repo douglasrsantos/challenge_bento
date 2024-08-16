@@ -63,4 +63,11 @@ void main() {
 
     expect(() async => await getProduct(1), throwsA(RequestError.noData));
   });
+
+  test('should return an error if the request is not completed', () async {
+    when(productServiceImpl.getProductById(productId: anyNamed('productId')))
+        .thenThrow('generic-error');
+
+    expect(() async => await getProduct(1), throwsA('generic-error'));
+  });
 }
