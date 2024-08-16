@@ -30,4 +30,14 @@ void main() {
 
     expect(user!.id, mockValidUserModel().id);
   });
+
+  test('should return null if request success, but no have data', () async {
+    when(userService.getUser()).thenAnswer(
+      (_) async => null,
+    );
+
+    final user = await userService.getUser();
+
+    expect(user, null);
+  });
 }
