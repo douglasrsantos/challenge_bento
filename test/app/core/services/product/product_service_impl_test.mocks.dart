@@ -64,3 +64,20 @@ class MockProductServiceImpl extends _i1.Mock
         returnValueForMissingStub: _i4.Future<_i5.ProductModel?>.value(),
       ) as _i4.Future<_i5.ProductModel?>);
 }
+
+/// A class which mocks [ProductRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockProductRepository extends _i1.Mock implements _i2.ProductRepository {
+  @override
+  _i4.Future<List<_i5.ProductModel>> getAllProducts() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue:
+            _i4.Future<List<_i5.ProductModel>>.value(<_i5.ProductModel>[]),
+        returnValueForMissingStub:
+            _i4.Future<List<_i5.ProductModel>>.value(<_i5.ProductModel>[]),
+      ) as _i4.Future<List<_i5.ProductModel>>);
+}

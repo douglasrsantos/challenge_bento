@@ -1,3 +1,4 @@
 enum RequestError {
-  noData
+  noData,
+  notFound,
 }
