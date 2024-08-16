@@ -62,8 +62,7 @@ void main() {
   test('should return error no data if json file is empty', () async {
     mockRequestError(RequestError.noData);
 
-    expect(() async => await userServiceImpl.getUser(),
-        throwsA(RequestError.noData));
+    expect(() async => await getUser(), throwsA(RequestError.noData));
   });
 
   test('should return an error if the request is not completed', () async {

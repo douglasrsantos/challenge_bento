@@ -2,6 +2,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/repositories/repositories.dart';
 
@@ -41,7 +42,7 @@ void main() {
   setUp(() {
     userRepositoryImpl = MockUserRepositoryImpl();
   });
-  
+
   test('should return a user model', () async {
     mockRequestSuccess(mockValidUserModel());
 
@@ -56,5 +57,11 @@ void main() {
     final user = await getUser();
 
     expect(user, null);
+  });
+
+  test('should return error no data if json file is empty', () async {
+    mockRequestError(RequestError.noData);
+
+    expect(() async => await getUser(), throwsA(RequestError.noData));
   });
 }
