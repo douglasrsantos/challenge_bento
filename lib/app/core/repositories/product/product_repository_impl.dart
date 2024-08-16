@@ -18,7 +18,7 @@ class ProductRepositoryImpl implements ProductRepository {
       final jsonData = jsonDecode(jsonString);
 
       if (jsonData['products'].isEmpty) {
-        throw RequestError.noData;
+        return [];
       }
 
       final products = List.generate(

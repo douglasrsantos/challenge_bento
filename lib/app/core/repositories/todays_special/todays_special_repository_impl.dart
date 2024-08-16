@@ -18,7 +18,7 @@ class TodaysSpecialRepositoryImpl implements TodaysSpecialRepository {
       final jsonData = jsonDecode(jsonString);
 
       if (jsonData['todaysSpecial'].isEmpty) {
-        throw RequestError.noData;
+        return [];
       }
 
       final todaysSpecial = List.generate(

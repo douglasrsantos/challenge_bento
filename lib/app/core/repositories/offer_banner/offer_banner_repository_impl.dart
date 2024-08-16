@@ -18,7 +18,7 @@ class OfferBannerRepositoryImpl implements OfferBannerRepository {
       final jsonData = jsonDecode(jsonString);
 
       if (jsonData['offerBanners'].isEmpty) {
-        throw RequestError.noData;
+        return [];
       }
 
       final offerBanners = List.generate(

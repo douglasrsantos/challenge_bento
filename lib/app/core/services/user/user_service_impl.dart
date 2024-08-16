@@ -8,5 +8,5 @@ class UserServiceImpl implements UserService {
   UserServiceImpl({required this.userRepository});
 
   @override
-  Future<UserModel> getUser() => userRepository.getUser();
+  Future<UserModel?> getUser() => userRepository.getUser();
 }
