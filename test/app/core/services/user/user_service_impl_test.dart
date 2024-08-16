@@ -48,4 +48,10 @@ void main() {
     expect(
         () async => await userService.getUser(), throwsA(RequestError.noData));
   });
+
+  test('should return an error if the request is not completed', () async {
+    when(userService.getUser()).thenThrow('generic-error');
+
+    expect(() async => await userService.getUser(), throwsA('generic-error'));
+  });
 }
