@@ -41,11 +41,20 @@ void main() {
   setUp(() {
     userRepositoryImpl = MockUserRepositoryImpl();
   });
+  
   test('should return a user model', () async {
     mockRequestSuccess(mockValidUserModel());
 
     final user = await getUser();
 
     expect(user!.id, mockValidUserModel().id);
+  });
+
+  test('should return null if request success, but no have data', () async {
+    mockRequestSuccess(null);
+
+    final user = await getUser();
+
+    expect(user, null);
   });
 }
