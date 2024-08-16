@@ -51,4 +51,13 @@ void main() {
 
     expect(categories.length, 1);
   });
+
+  test('should return empty list if request success, but no have data',
+      () async {
+    mockRequestSuccess([]);
+
+    final categories = await getCategories();
+
+    expect(categories.isEmpty, true);
+  });
 }
