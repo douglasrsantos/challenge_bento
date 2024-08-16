@@ -72,4 +72,10 @@ void main() {
 
     expect(() async => await getProducts(), throwsA(RequestError.noData));
   });
+
+  test('should return an error if the request is not completed', () async {
+    mockRequestError('generic-error');
+
+    expect(() async => await getProducts(), throwsA('generic-error'));
+  });
 }
