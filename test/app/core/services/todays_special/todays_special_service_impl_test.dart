@@ -47,7 +47,7 @@ void main() {
     todaysSpecialServiceImpl = MockTodaysSpecialServiceImpl();
   });
 
-  test("should return a today's special model", () async {
+  test("should return a today's special model list", () async {
     mockRequestSuccess(mockValidTodaysSpecialModelList());
 
     final todaysSpecials = await getTodaysSpecials();

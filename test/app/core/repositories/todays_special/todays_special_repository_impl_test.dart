@@ -23,7 +23,7 @@ void main() {
         ),
       ];
 
-  //simulates getAllTodaysSpecials request from todaysSpecialServiceImpl
+  //simulates getAllTodaysSpecials request from todaysSpecialRepositoryImpl
   PostExpectation mockRequest() =>
       when(todaysSpecialRepositoryImpl.getAllTodaysSpecials());
 
