@@ -45,11 +45,20 @@ void main() {
     categoryRepositoryImpl = MockCategoryRepositoryImpl();
   });
 
-  test("should return a today's special model list", () async {
+  test("should return a category model list", () async {
     mockRequestSuccess(mockValidCategoryModelList());
 
     final categories = await getCategories();
 
     expect(categories.length, 1);
+  });
+
+  test('should return empty list if request success, but no have data',
+      () async {
+    mockRequestSuccess([]);
+
+    final categories = await getCategories();
+
+    expect(categories.isEmpty, true);
   });
 }
