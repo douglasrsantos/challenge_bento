@@ -54,4 +54,13 @@ void main() {
 
     expect(offerBanners.length, 1);
   });
+
+  test('should return empty list if request success, but no have data',
+      () async {
+    mockRequestSuccess([]);
+
+    final offerBanners = await getOfferBanners();
+
+    expect(offerBanners.isEmpty, true);
+  });
 }
