@@ -69,4 +69,10 @@ void main() {
 
     expect(() async => await getTodaysSpecials(), throwsA(RequestError.noData));
   });
+
+  test('should return an error if the request is not completed', () async {
+    mockRequestError('generic-error');
+
+    expect(() async => await getTodaysSpecials(), throwsA('generic-error'));
+  });
 }
