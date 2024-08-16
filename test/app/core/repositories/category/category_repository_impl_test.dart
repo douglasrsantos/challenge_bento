@@ -61,4 +61,10 @@ void main() {
 
     expect(categories.isEmpty, true);
   });
+
+  test('should return error no data if json file is empty', () async {
+    mockRequestError(RequestError.noData);
+
+    expect(() async => await getCategories(), throwsA(RequestError.noData));
+  });
 }
