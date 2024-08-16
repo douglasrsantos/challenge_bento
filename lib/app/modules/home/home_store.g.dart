@@ -87,6 +87,23 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  late final _$currentBannersImageIndexAtom =
+      Atom(name: 'HomeStoreBase.currentBannersImageIndex', context: context);
+
+  @override
+  int get currentBannersImageIndex {
+    _$currentBannersImageIndexAtom.reportRead();
+    return super.currentBannersImageIndex;
+  }
+
+  @override
+  set currentBannersImageIndex(int value) {
+    _$currentBannersImageIndexAtom
+        .reportWrite(value, super.currentBannersImageIndex, () {
+      super.currentBannersImageIndex = value;
+    });
+  }
+
   late final _$userAtom = Atom(name: 'HomeStoreBase.user', context: context);
 
   @override
@@ -189,6 +206,7 @@ infoErrorMessage: ${infoErrorMessage},
 infoSuccessMessage: ${infoSuccessMessage},
 isLoading: ${isLoading},
 currentPageIndex: ${currentPageIndex},
+currentBannersImageIndex: ${currentBannersImageIndex},
 user: ${user},
 offerBanners: ${offerBanners},
 categories: ${categories},

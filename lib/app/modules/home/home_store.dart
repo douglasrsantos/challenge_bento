@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -44,6 +46,9 @@ abstract class HomeStoreBase with Store {
   int currentPageIndex = 0;
 
   @observable
+  int currentBannersImageIndex = 0;
+
+  @observable
   UserModel? user;
 
   @observable
@@ -55,7 +60,11 @@ abstract class HomeStoreBase with Store {
   @observable
   List<TodaysSpecialModel> todaysSpecials = [];
 
+  Timer? timer;
+
+  ///Before opening the screen loads all the data necessary for display
   void init() async {
+    startAutoScroll();
     isLoading = true;
     infoErrorMessage = null;
     await Future.wait([
@@ -113,5 +122,31 @@ abstract class HomeStoreBase with Store {
     } catch (e) {
       infoErrorMessage = e.toString();
     }
+  }
+
+  ///Starts the auto scroll function of banners
+  void startAutoScroll() {
+    timer = Timer.periodic(const Duration(seconds: 2), (Timer timer) {
+      if (currentBannersImageIndex < offerBanners.length - 1) {
+        currentBannersImageIndex++;
+      } else {
+        currentBannersImageIndex = 0;
+      }
+
+      bannersPageController.animateToPage(
+        currentBannersImageIndex,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInToLinear,
+      );
+    });
+  }
+
+  ///Navigate to the clicked page in the bottom bar
+  void onTapNavigateOnBottomBar(int index) {
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.linearToEaseOut,
+    );
   }
 }

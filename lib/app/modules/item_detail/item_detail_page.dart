@@ -44,10 +44,17 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
   }
 
   @override
+  void dispose() {
+    controller.timer?.cancel();
+    controller.imagePageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        onTapArrowBack: () => context.pop(),
+        onTapArrowBack: () => context.go('/home'),
         onTapFavorite: () => controller.toggleIsFavorite(),
         isFavorite: controller.isFavorite,
         showFavoriteIcon: true,

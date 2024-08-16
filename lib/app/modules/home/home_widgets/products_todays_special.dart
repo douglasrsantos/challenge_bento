@@ -19,12 +19,12 @@ class ProductsTodaysSpecial extends StatelessWidget {
       child: Row(
         children: [
           CardProduct(
-            onTap: () => context.push('/item-detail/${todaysSpecials[0].id}'),
+            onTap: () => context.go('/item-detail/${todaysSpecials[0].id}'),
             todaysSpecial: todaysSpecials[0],
           ),
           const Spacer(),
           CardProduct(
-            onTap: () => context.push('/item-detail/${todaysSpecials[1].id}'),
+            onTap: () => context.go('/item-detail/${todaysSpecials[1].id}'),
             todaysSpecial: todaysSpecials[1],
           ),
         ],

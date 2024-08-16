@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -37,9 +39,16 @@ abstract class ItemDetailStoreBase with Store {
   bool isFavorite = false;
 
   @observable
+  int currentImagesIndex = 0;
+
+  @observable
   ProductModel? product;
 
+  Timer? timer;
+
+  ///Before opening the screen loads all the data necessary for display
   void init({required String id}) async {
+    startAutoScroll();
     await getProduct(int.tryParse(id));
   }
 
@@ -58,6 +67,7 @@ abstract class ItemDetailStoreBase with Store {
     isLoading = false;
   }
 
+  ///Calculates the normal value of the product minus the discount
   String calculateFinalPrice() {
     if (product != null) {
       double finalPrice =
@@ -69,8 +79,26 @@ abstract class ItemDetailStoreBase with Store {
     return '0.00';
   }
 
+  ///Toggles favorite button
   @action
   void toggleIsFavorite() {
     isFavorite = !isFavorite;
+  }
+
+  ///Starts the auto scroll function of banners
+  void startAutoScroll() {
+    timer = Timer.periodic(const Duration(seconds: 2), (Timer timer) {
+      if (currentImagesIndex < product!.images.length - 1) {
+        currentImagesIndex++;
+      } else {
+        currentImagesIndex = 0;
+      }
+
+      imagePageController.animateToPage(
+        currentImagesIndex,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInToLinear,
+      );
+    });
   }
 }

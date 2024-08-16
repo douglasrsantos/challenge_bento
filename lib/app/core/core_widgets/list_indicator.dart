@@ -19,31 +19,19 @@ class ListIndicator extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-            child: SmoothPageIndicator(
-              controller: pageController,
-              count: count,
-              effect: ExpandingDotsEffect(
-                dotColor: AppColors.greenButtons.withOpacity(0.5),
-                activeDotColor: AppColors.greenButtons,
-                dotHeight: 6,
-                dotWidth: 6,
-                spacing: 4,
-              ),
-            )
-
-            // AnimatedSmoothIndicator(
-            //   activeIndex: 1,
-            //   count: 3,
-            // effect: ExpandingDotsEffect(
-            //   dotColor: AppColors.greenButtons.withOpacity(0.5),
-            //   activeDotColor: AppColors.greenButtons,
-            //   dotHeight: 6,
-            //   dotWidth: 6,
-            //   spacing: 4,
-            // ),
-            // ),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+          child: SmoothPageIndicator(
+            controller: pageController,
+            count: count,
+            effect: ExpandingDotsEffect(
+              dotColor: AppColors.greenButtons.withOpacity(0.5),
+              activeDotColor: AppColors.greenButtons,
+              dotHeight: 6,
+              dotWidth: 6,
+              spacing: 4,
             ),
+          ),
+        ),
       ],
     );
   }

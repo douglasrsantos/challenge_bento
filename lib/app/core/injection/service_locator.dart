@@ -46,7 +46,7 @@ void setupDependencies() {
   ));
 
   //Injecting item detail controller dependencies
-  getIt.registerSingleton<ItemDetailStore>(ItemDetailStore(
-    productService: getIt<ProductService>(),
-  ));
+  getIt.registerFactory<ItemDetailStore>(() => ItemDetailStore(
+        productService: getIt<ProductService>(),
+      ));
 }

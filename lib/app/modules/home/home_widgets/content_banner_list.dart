@@ -16,55 +16,59 @@ class ContentBannerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color:
-              Color(0xFF000000 + int.parse(offerBanner.bannerColor, radix: 16)),
-        ),
-        child: Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  offerBanner.title,
-                  style: AppFonts.additionalInfoTexts,
-                ),
-                Text(
-                  offerBanner.subtitle,
-                  style: AppFonts.emphasisHome,
-                ),
-                const SizedBox(height: 12),
-                Card(
-                  color: AppColors.darkBlue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(16, 16, 0, 16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: Color(
+                0xFF000000 + int.parse(offerBanner.bannerColor, radix: 16)),
+          ),
+          clipBehavior: Clip.hardEdge,
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    offerBanner.title,
+                    style: AppFonts.additionalInfoTexts,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8,
-                      horizontal: 16,
+                  Text(
+                    offerBanner.subtitle,
+                    style: AppFonts.emphasisHome,
+                  ),
+                  const SizedBox(height: 12),
+                  Card(
+                    color: AppColors.darkBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
                     ),
-                    child: Text(
-                      AppLocalizations.of(context)!.shopNow,
-                      style: AppFonts.secondaryTexts
-                          .copyWith(color: AppColors.greenButtons),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 16,
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)!.shopNow,
+                        style: AppFonts.secondaryTexts
+                            .copyWith(color: AppColors.greenButtons),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Image.asset(
-              AppImages.imagesMap[offerBanner.image] ?? '',
-              cacheHeight: 379,
-              cacheWidth: 421,
-            ),
-          ],
+                ],
+              ),
+              Image.asset(
+                AppImages.imagesMap[offerBanner.image] ?? '',
+                cacheHeight: 379,
+                cacheWidth: 421,
+              ),
+            ],
+          ),
         ),
       ),
     );

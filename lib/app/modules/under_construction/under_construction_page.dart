@@ -16,7 +16,7 @@ class UnderConstructionPage extends StatelessWidget {
     return Scaffold(
       appBar: showAppBar
           ? CustomAppBar(
-              onTapArrowBack: () => context.pop(),
+              onTapArrowBack: () => context.go('/home'),
             )
           : null,
       body: const Center(

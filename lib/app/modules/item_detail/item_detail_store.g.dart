@@ -88,6 +88,22 @@ mixin _$ItemDetailStore on ItemDetailStoreBase, Store {
     });
   }
 
+  late final _$currentImagesIndexAtom =
+      Atom(name: 'ItemDetailStoreBase.currentImagesIndex', context: context);
+
+  @override
+  int get currentImagesIndex {
+    _$currentImagesIndexAtom.reportRead();
+    return super.currentImagesIndex;
+  }
+
+  @override
+  set currentImagesIndex(int value) {
+    _$currentImagesIndexAtom.reportWrite(value, super.currentImagesIndex, () {
+      super.currentImagesIndex = value;
+    });
+  }
+
   late final _$productAtom =
       Atom(name: 'ItemDetailStoreBase.product', context: context);
 
@@ -133,6 +149,7 @@ infoErrorMessage: ${infoErrorMessage},
 infoSuccessMessage: ${infoSuccessMessage},
 isLoading: ${isLoading},
 isFavorite: ${isFavorite},
+currentImagesIndex: ${currentImagesIndex},
 product: ${product},
 hasError: ${hasError},
 hasSuccess: ${hasSuccess}
