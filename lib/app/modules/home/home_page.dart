@@ -43,6 +43,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    controller.timer?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             }
             return UserImage(
               imageAsset: AppImages.imagesMap[controller.user?.image] ?? '',
-              onTap: () => context.push('/under-construction'),
+              onTap: () => context.go('/under-construction'),
             );
           }),
         ],
@@ -74,27 +80,11 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: const FabButton(),
       bottomNavigationBar: Observer(builder: (_) {
         return CustomBottomAppBar(
-          currentIndex: widget.controller.currentPageIndex,
-          onTapHome: () {
-            widget.controller.pageController.animateToPage(0,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.linearToEaseOut);
-          },
-          onTapDeals: () {
-            widget.controller.pageController.animateToPage(1,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.linearToEaseOut);
-          },
-          onTapCart: () {
-            widget.controller.pageController.animateToPage(2,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.linearToEaseOut);
-          },
-          onTapAccount: () {
-            widget.controller.pageController.animateToPage(3,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.linearToEaseOut);
-          },
+          currentIndex: controller.currentPageIndex,
+          onTapHome: () => controller.onTapNavigateOnBottomBar(0),
+          onTapDeals: () => controller.onTapNavigateOnBottomBar(1),
+          onTapCart: () => controller.onTapNavigateOnBottomBar(2),
+          onTapAccount: () => controller.onTapNavigateOnBottomBar(3),
         );
       }),
       body: Observer(builder: (_) {
@@ -103,8 +93,7 @@ class _HomePageState extends State<HomePage> {
         }
 
         return PageView(
-          controller: widget.controller.pageController,
-          onPageChanged: (index) => widget.controller.currentPageIndex = index,
+          controller: controller.pageController,
           children: [
             HomeScreen(
               offerBanners: controller.offerBanners,

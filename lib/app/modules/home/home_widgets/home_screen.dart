@@ -28,10 +28,13 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           InitialButtons(
-            onTapOrderAgain: () => context.push('/under-construction'),
-            onTapLocalShop: () => context.push('/under-construction'),
+            onTapOrderAgain: () => context.go('/under-construction'),
+            onTapLocalShop: () => context.go('/under-construction'),
           ),
-          BannersList(offerBanners: offerBanners),
+          BannersList(
+            offerBanners: offerBanners,
+            pageController: pageController,
+          ),
           ListIndicator(
             count: 3,
             pageController: pageController,
@@ -41,7 +44,7 @@ class HomeScreen extends StatelessWidget {
           SectionTitle(
             leftText: AppLocalizations.of(context)!.todaysSpecialTitle,
             rightText: AppLocalizations.of(context)!.seeAll,
-            onTapRightText: () => context.push('/under-construction'),
+            onTapRightText: () => context.go('/under-construction'),
           ),
           ProductsTodaysSpecial(todaysSpecials: todaysSpecials),
         ],
