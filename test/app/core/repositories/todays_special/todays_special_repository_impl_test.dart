@@ -54,4 +54,13 @@ void main() {
 
     expect(todaysSpecials.length, 1);
   });
+
+  test('should return empty list if request success, but no have data',
+      () async {
+    mockRequestSuccess([]);
+
+    final todaysSpecials = await getTodaysSpecials();
+
+    expect(todaysSpecials.isEmpty, true);
+  });
 }
