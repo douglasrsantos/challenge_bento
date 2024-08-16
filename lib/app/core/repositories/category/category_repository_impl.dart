@@ -18,7 +18,7 @@ class CategoryRepositoryImpl implements CategoryRepository {
       final jsonData = jsonDecode(jsonString);
 
       if (jsonData['categories'].isEmpty) {
-        throw RequestError.noData;
+        return [];
       }
 
       final categories = List.generate(

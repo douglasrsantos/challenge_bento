@@ -7,7 +7,7 @@ import 'package:challenge_bento/app/core/utils/utils.dart';
 
 class UserRepositoryImpl implements UserRepository {
   @override
-  Future<UserModel> getUser() async {
+  Future<UserModel?> getUser() async {
     try {
       final jsonString = await AccessDataJson.getJson();
 
@@ -18,7 +18,7 @@ class UserRepositoryImpl implements UserRepository {
       final jsonData = jsonDecode(jsonString);
 
       if (jsonData['user'].isEmpty) {
-        throw RequestError.noData;
+        return null;
       }
 
       return UserModel.forModel(jsonData['user']);
