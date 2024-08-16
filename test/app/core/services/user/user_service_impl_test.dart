@@ -10,8 +10,9 @@ import 'user_service_impl_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<UserServiceImpl>()])
 void main() {
-  late MockUserServiceImpl userService;
+  late MockUserServiceImpl userServiceImpl;
 
+//mock user model
   UserModel mockValidUserModel() => UserModel(
         id: 1,
         type: 'mockType',
@@ -19,39 +20,55 @@ void main() {
         image: 'mockImage',
       );
 
-  setUp(() {
-    userService = MockUserServiceImpl();
-  });
-  test('should return a user model', () async {
-    when(userService.getUser()).thenAnswer(
-      (_) async => mockValidUserModel(),
-    );
+  //simulates getUser request from userServiceImpl
+  PostExpectation mockRequest() => when(userServiceImpl.getUser());
 
-    final user = await userService.getUser();
+  //mock of requests who return success
+  void mockRequestSuccess(UserModel? data) {
+    mockRequest().thenAnswer((_) async => data);
+  }
+
+  //mock of requests who return errors
+  void mockRequestError(dynamic error) {
+    mockRequest().thenThrow(error);
+  }
+
+  //method who returns function getUser
+  Future<UserModel?> getUser() async {
+    return await userServiceImpl.getUser();
+  }
+
+  //load the userServiceImpl mock before starting tests
+  setUp(() {
+    userServiceImpl = MockUserServiceImpl();
+  });
+
+  test('should return a user model', () async {
+    mockRequestSuccess(mockValidUserModel());
+
+    final user = await getUser();
 
     expect(user!.id, mockValidUserModel().id);
   });
 
   test('should return null if request success, but no have data', () async {
-    when(userService.getUser()).thenAnswer(
-      (_) async => null,
-    );
+    mockRequestSuccess(null);
 
-    final user = await userService.getUser();
+    final user = await getUser();
 
     expect(user, null);
   });
 
   test('should return error no data if json file is empty', () async {
-    when(userService.getUser()).thenThrow(RequestError.noData);
+    mockRequestError(RequestError.noData);
 
-    expect(
-        () async => await userService.getUser(), throwsA(RequestError.noData));
+    expect(() async => await userServiceImpl.getUser(),
+        throwsA(RequestError.noData));
   });
 
   test('should return an error if the request is not completed', () async {
-    when(userService.getUser()).thenThrow('generic-error');
+    mockRequestError('generic-error');
 
-    expect(() async => await userService.getUser(), throwsA('generic-error'));
+    expect(() async => await getUser(), throwsA('generic-error'));
   });
 }
