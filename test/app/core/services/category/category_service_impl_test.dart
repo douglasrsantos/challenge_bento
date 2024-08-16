@@ -66,4 +66,10 @@ void main() {
 
     expect(() async => await getCategories(), throwsA(RequestError.noData));
   });
+
+  test('should return an error if the request is not completed', () async {
+    mockRequestError('generic-error');
+
+    expect(() async => await getCategories(), throwsA('generic-error'));
+  });
 }
