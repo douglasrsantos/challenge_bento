@@ -1,3 +1,4 @@
+import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/product_model.dart';
 import 'package:challenge_bento/app/core/repositories/repositories.dart';
 import 'package:challenge_bento/app/core/services/services.dart';
@@ -9,15 +10,24 @@ class ProductServiceImpl implements ProductService {
 
   @override
   Future<ProductModel?> getProductById({required int productId}) async {
-    final result = await productRepository.getAllProducts();
+    try {
+      final result = await productRepository.getAllProducts();
 
-    if (result.isEmpty) {
-      return null;
+      if (result.isEmpty) {
+        return null;
+      }
+
+      ProductModel product = result.firstWhere(
+        (product) => product.id == productId,
+        orElse: () => throw RequestError.notFound,
+      );
+
+      return product;
+    } catch (e) {
+      if (e == RequestError.notFound) {
+        throw "Product not found";
+      }
+      throw e.toString();
     }
-
-    ProductModel product =
-        result.firstWhere((product) => product.id == productId);
-
-    return product;
   }
 }
