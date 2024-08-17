@@ -102,4 +102,14 @@ void main() {
     expect(controller.infoErrorMessage, isNull);
     expect(controller.isLoading, isFalse);
   });
+
+  test('should handle error on fetch offer banner data correctly', () async {
+    mockOfferBannerServiceRequest().thenThrow(mockError);
+
+    await controller.getOfferBanners();
+
+    expect(controller.offerBanners, isEmpty);
+    expect(controller.infoErrorMessage, mockError);
+    expect(controller.isLoading, isFalse);
+  });
 }
