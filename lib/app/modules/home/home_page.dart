@@ -39,6 +39,10 @@ class _HomePageState extends State<HomePage> {
       }
     });
 
+    reaction((_) => controller.currentBannersImageIndex, (_) {
+      controller.animateToPage();
+    });
+
     controller.init();
   }
 

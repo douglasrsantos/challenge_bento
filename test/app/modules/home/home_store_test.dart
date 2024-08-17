@@ -1,4 +1,3 @@
-import 'package:challenge_bento/app/core/models/offer_banner_model.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -39,6 +38,13 @@ void main() {
           subtitle: 'mockSubtitle',
           image: 'mockImage',
           bannerColor: 'mockBannerColor',
+        ),
+        OfferBannerModel(
+          id: 2,
+          title: 'mockTitle2',
+          subtitle: 'mockSubtitle2',
+          image: 'mockImage2',
+          bannerColor: 'mockBannerColor2',
         )
       ];
 
@@ -126,7 +132,7 @@ void main() {
 
     await controller.getOfferBanners();
 
-    expect(controller.offerBanners.length, 1);
+    expect(controller.offerBanners.length, 2);
     expect(controller.infoErrorMessage, isNull);
     expect(controller.isLoading, isFalse);
   });
@@ -182,5 +188,26 @@ void main() {
     expect(controller.todaysSpecials, isEmpty);
     expect(controller.infoErrorMessage, mockError);
     expect(controller.isLoading, isFalse);
+  });
+
+  test('should start timer', () async {
+    controller.startAutoScroll();
+
+    expect(controller.timer, isNotNull);
+  });
+
+  test('should increment the image index every tick', () async {
+    mockOfferBannerServiceRequest()
+        .thenAnswer((_) async => mockValidOfferBannerModel());
+
+    await controller.getOfferBanners();
+
+    controller.startAutoScroll();
+
+    expect(controller.currentBannersImageIndex, 0);
+    await Future.delayed(const Duration(seconds: 3));
+    expect(controller.currentBannersImageIndex, 1);
+    await Future.delayed(const Duration(seconds: 2));
+    expect(controller.currentBannersImageIndex, 0);
   });
 }
