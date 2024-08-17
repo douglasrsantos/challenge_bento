@@ -1,5 +1,6 @@
-import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'package:challenge_bento/app/core/models/models.dart';
 
 void main() {
   UserModel mockValidUserModel() => UserModel(
@@ -41,12 +42,6 @@ void main() {
   });
 
   test('should throws an error if required fields are missing', () {
-    expect(() => UserModel.forModel(mockWrongMap()), throwsA(isA<TypeError>()));
-  });
-
-  test('should throw an error if there are fields with incorrect keys', () {
-    mockWrongMap()['wrongKey'] = 'mockValue';
-
     expect(() => UserModel.forModel(mockWrongMap()), throwsA(isA<TypeError>()));
   });
 
