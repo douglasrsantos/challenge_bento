@@ -1,6 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:challenge_bento/app/core/models/models.dart';
 
 class ProductModel {
@@ -65,9 +63,4 @@ class ProductModel {
       ),
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductModel.fromJson(String source) =>
-      ProductModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

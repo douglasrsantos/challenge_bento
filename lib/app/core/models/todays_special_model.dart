@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class TodaysSpecialModel {
   int id;
@@ -39,9 +37,4 @@ class TodaysSpecialModel {
       colorCode: map['colorCode'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory TodaysSpecialModel.fromJson(String source) =>
-      TodaysSpecialModel.forModel(json.decode(source) as Map<String, dynamic>);
 }

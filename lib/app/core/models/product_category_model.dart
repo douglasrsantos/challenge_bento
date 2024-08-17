@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class ProductCategoryModel {
   int id;
@@ -35,10 +33,4 @@ class ProductCategoryModel {
       colorCode: map['colorCode'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductCategoryModel.fromJson(String source) =>
-      ProductCategoryModel.forModel(
-          json.decode(source) as Map<String, dynamic>);
 }

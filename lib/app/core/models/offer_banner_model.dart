@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class OfferBannerModel {
   int id;
@@ -39,9 +37,4 @@ class OfferBannerModel {
       bannerColor: map['bannerColor'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory OfferBannerModel.fromJson(String source) =>
-      OfferBannerModel.forModel(json.decode(source) as Map<String, dynamic>);
 }
