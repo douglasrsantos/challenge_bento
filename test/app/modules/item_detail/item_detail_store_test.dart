@@ -36,4 +36,16 @@ void main() {
     verify(productService.getProductById(productId: 1)).called(1);
     expect(controller.timer, isNotNull);
   });
+
+  test('should return the correct product model and no error', () async {
+    when(productService.getProductById(productId: anyNamed('productId')))
+        .thenAnswer(
+      (_) async => mockValidProductModel(),
+    );
+
+    await controller.getProduct(2);
+
+    expect(controller.product?.id, 1);
+    expect(controller.infoErrorMessage, isNull);
+  });
 }
