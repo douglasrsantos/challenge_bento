@@ -19,6 +19,17 @@ void main() {
   late MockTodaysSpecialService todaysSpecialService;
   late HomeStore controller;
 
+  //mock user model
+  UserModel mockValidUserModel() => UserModel(
+        id: 1,
+        type: 'mockType',
+        name: 'mockName',
+        image: 'mockImage',
+      );
+
+  //simulates getUser request from userService
+  PostExpectation mockUserServiceRequest() => when(userService.getUser());
+
   setUp(() {
     userService = MockUserService();
     offerBannerService = MockOfferBannerService();
@@ -40,5 +51,15 @@ void main() {
     verify(categoryService.getAllCategories()).called(1);
     verify(todaysSpecialService.getAllTodaysSpecials()).called(1);
     expect(controller.timer, isNotNull);
+  });
+
+  test('should return the correct user model and no error', () async {
+    mockUserServiceRequest().thenAnswer((_) async => mockValidUserModel());
+
+    await controller.getUserData();
+
+    expect(controller.user?.id, 1);
+    expect(controller.infoErrorMessage, isNull);
+    expect(controller.isLoading, isFalse);
   });
 }
