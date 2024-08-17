@@ -42,12 +42,23 @@ void main() {
         )
       ];
 
-//mock category model list
+  //mock category model list
   List<CategoryModel> mockValidCategoryModel() => [
         CategoryModel(
           id: 1,
           name: 'mockName',
           image: 'mockImage',
+        )
+      ];
+
+  //mock today's special model list
+  List<TodaysSpecialModel> mockValidTodaysSpecialModel() => [
+        TodaysSpecialModel(
+          id: 1,
+          name: 'mockName',
+          rating: 1.1,
+          image: 'mockImage',
+          colorCode: 'mockColorCode',
         )
       ];
 
@@ -61,6 +72,10 @@ void main() {
   //simulates getAllCategories request from categoryService
   PostExpectation mockCategoryServiceRequest() =>
       when(categoryService.getAllCategories());
+
+  //simulates getAllTodaysSpecials request from todaysSpecialService
+  PostExpectation mockTodaysSpecialServiceRequest() =>
+      when(todaysSpecialService.getAllTodaysSpecials());
 
   setUp(() {
     userService = MockUserService();
@@ -144,6 +159,18 @@ void main() {
 
     expect(controller.offerBanners, isEmpty);
     expect(controller.infoErrorMessage, mockError);
+    expect(controller.isLoading, isFalse);
+  });
+
+  test("should return the correct today's special model and no error",
+      () async {
+    mockTodaysSpecialServiceRequest()
+        .thenAnswer((_) async => mockValidTodaysSpecialModel());
+
+    await controller.getTodaysSpecials();
+
+    expect(controller.todaysSpecials.length, 1);
+    expect(controller.infoErrorMessage, isNull);
     expect(controller.isLoading, isFalse);
   });
 }
