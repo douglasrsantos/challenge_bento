@@ -1,3 +1,4 @@
+import 'package:challenge_bento/app/core/models/offer_banner_model.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -30,8 +31,23 @@ void main() {
         image: 'mockImage',
       );
 
+  //mock offer banner model
+  List<OfferBannerModel> mockValidOfferBannerModel() => [
+        OfferBannerModel(
+          id: 1,
+          title: 'mockTitle',
+          subtitle: 'mockSubtitle',
+          image: 'mockImage',
+          bannerColor: 'mockBannerColor',
+        )
+      ];
+
   //simulates getUser request from userService
   PostExpectation mockUserServiceRequest() => when(userService.getUser());
+
+  //simulates getAllOfferBanners request from offerBannerService
+  PostExpectation mockOfferBannerServiceRequest() =>
+      when(offerBannerService.getAllOfferBanners());
 
   setUp(() {
     userService = MockUserService();
@@ -73,6 +89,17 @@ void main() {
 
     expect(controller.user, isNull);
     expect(controller.infoErrorMessage, mockError);
+    expect(controller.isLoading, isFalse);
+  });
+
+  test('should return the correct offer banner model and no error', () async {
+    mockOfferBannerServiceRequest()
+        .thenAnswer((_) async => mockValidOfferBannerModel());
+
+    await controller.getOfferBanners();
+
+    expect(controller.offerBanners.length, 1);
+    expect(controller.infoErrorMessage, isNull);
     expect(controller.isLoading, isFalse);
   });
 }
