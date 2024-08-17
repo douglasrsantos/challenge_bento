@@ -19,7 +19,7 @@ void main() {
         rating: 1.1,
         shop: 'mockShop',
         description: 'MockDescription',
-        price: 2.2,
+        price: 1,
         discountPercent: 10,
         productCategories: [],
         images: [],
@@ -59,5 +59,24 @@ void main() {
     expect(controller.product, isNull);
     expect(controller.infoErrorMessage, 'any-error');
     expect(controller.isLoading, isFalse);
+  });
+
+  test('should calculate final price correctly', () async {
+    when(productService.getProductById(productId: anyNamed('productId')))
+        .thenAnswer(
+      (_) async => mockValidProductModel(),
+    );
+
+    await controller.getProduct(1);
+
+    final priceString = controller.calculateFinalPrice();
+
+    expect(priceString, '0.90');
+  });
+
+  test('should return 0.00 if product is null', () async {
+    final priceString = controller.calculateFinalPrice();
+
+    expect(priceString, '0.00');
   });
 }
