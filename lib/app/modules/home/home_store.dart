@@ -132,13 +132,15 @@ abstract class HomeStoreBase with Store {
       } else {
         currentBannersImageIndex = 0;
       }
-
-      bannersPageController.animateToPage(
-        currentBannersImageIndex,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInToLinear,
-      );
     });
+  }
+
+  void animateToPage() {
+    bannersPageController.animateToPage(
+      currentBannersImageIndex,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInToLinear,
+    );
   }
 
   ///Navigate to the clicked page in the bottom bar
