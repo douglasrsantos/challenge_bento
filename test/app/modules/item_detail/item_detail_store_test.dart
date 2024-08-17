@@ -13,6 +13,7 @@ void main() {
   late MockProductService productService;
   late ItemDetailStore controller;
 
+  //mock product model
   ProductModel mockValidProductModel() => ProductModel(
         id: 1,
         name: 'mockName',
@@ -28,6 +29,20 @@ void main() {
         ],
       );
 
+  //simulates getProductById request from productService
+  PostExpectation mockRequest() =>
+      when(productService.getProductById(productId: anyNamed('productId')));
+
+  //mock of requests who return success
+  void mockRequestSuccess(ProductModel? data) {
+    mockRequest().thenAnswer((_) async => data);
+  }
+
+  //mock of requests who return errors
+  void mockRequestError(dynamic error) {
+    mockRequest().thenThrow(error);
+  }
+
   setUp(() {
     productService = MockProductService();
     controller = ItemDetailStore(productService: productService);
@@ -41,10 +56,7 @@ void main() {
   });
 
   test('should return the correct product model and no error', () async {
-    when(productService.getProductById(productId: anyNamed('productId')))
-        .thenAnswer(
-      (_) async => mockValidProductModel(),
-    );
+    mockRequestSuccess(mockValidProductModel());
 
     await controller.getProduct(2);
 
@@ -54,8 +66,7 @@ void main() {
   });
 
   test('should handle error correctly', () async {
-    when(productService.getProductById(productId: anyNamed('productId')))
-        .thenThrow('any-error');
+    mockRequestError('any-error');
 
     await controller.getProduct(1);
 
@@ -65,10 +76,7 @@ void main() {
   });
 
   test('should calculate final price correctly', () async {
-    when(productService.getProductById(productId: anyNamed('productId')))
-        .thenAnswer(
-      (_) async => mockValidProductModel(),
-    );
+    mockRequestSuccess(mockValidProductModel());
 
     await controller.getProduct(1);
 
@@ -98,10 +106,7 @@ void main() {
   });
 
   test('should increment the image index every tick', () async {
-    when(productService.getProductById(productId: anyNamed('productId')))
-        .thenAnswer(
-      (_) async => mockValidProductModel(),
-    );
+    mockRequestSuccess(mockValidProductModel());
 
     await controller.getProduct(1);
 
