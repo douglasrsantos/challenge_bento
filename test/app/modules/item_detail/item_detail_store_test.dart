@@ -47,5 +47,17 @@ void main() {
 
     expect(controller.product?.id, 1);
     expect(controller.infoErrorMessage, isNull);
+    expect(controller.isLoading, isFalse);
+  });
+
+  test('should handle error correctly', () async {
+    when(productService.getProductById(productId: anyNamed('productId')))
+        .thenThrow('any-error');
+
+    await controller.getProduct(1);
+
+    expect(controller.product, isNull);
+    expect(controller.infoErrorMessage, 'any-error');
+    expect(controller.isLoading, isFalse);
   });
 }
