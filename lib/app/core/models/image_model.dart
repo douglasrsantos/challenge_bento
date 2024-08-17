@@ -9,14 +9,10 @@ class ImageModel {
   });
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {
+    return <String, dynamic>{
       'id': id,
       'image': image,
     };
-
-    map.removeWhere((key, value) => value == null);
-
-    return map;
   }
 
   factory ImageModel.forModel(Map<String, dynamic> map) {

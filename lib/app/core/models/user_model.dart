@@ -13,16 +13,12 @@ class UserModel {
   });
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {
+    return <String, dynamic>{
       'id': id,
       'type': type,
       'name': name,
       'image': image,
     };
-
-    map.removeWhere((key, value) => value == null);
-
-    return map;
   }
 
   factory UserModel.forModel(Map<String, dynamic> map) {

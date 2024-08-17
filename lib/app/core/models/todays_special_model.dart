@@ -15,17 +15,13 @@ class TodaysSpecialModel {
   });
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {
+    return <String, dynamic>{
       'id': id,
       'name': name,
       'rating': rating,
       'image': image,
       'colorCode': colorCode,
     };
-
-    map.removeWhere((key, value) => value == null);
-
-    return map;
   }
 
   factory TodaysSpecialModel.forModel(Map<String, dynamic> map) {

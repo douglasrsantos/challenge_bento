@@ -25,7 +25,7 @@ class ProductModel {
   });
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {
+    return <String, dynamic>{
       'id': id,
       'name': name,
       'rating': rating,
@@ -36,10 +36,6 @@ class ProductModel {
       'productCategories': productCategories.map((x) => x.toMap()).toList(),
       'images': images.map((x) => x.toMap()).toList(),
     };
-
-    map.removeWhere((key, value) => value == null);
-
-    return map;
   }
 
   factory ProductModel.forModel(Map<String, dynamic> map) {

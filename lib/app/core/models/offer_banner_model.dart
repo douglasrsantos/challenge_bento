@@ -15,17 +15,13 @@ class OfferBannerModel {
   });
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {
+    return <String, dynamic>{
       'id': id,
       'title': title,
       'subtitle': subtitle,
       'image': image,
       'bannerColor': bannerColor,
     };
-
-    map.removeWhere((key, value) => value == null);
-
-    return map;
   }
 
   factory OfferBannerModel.forModel(Map<String, dynamic> map) {
