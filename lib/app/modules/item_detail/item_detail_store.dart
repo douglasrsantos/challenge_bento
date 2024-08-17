@@ -88,17 +88,21 @@ abstract class ItemDetailStoreBase with Store {
   ///Starts the auto scroll function of banners
   void startAutoScroll() {
     timer = Timer.periodic(const Duration(seconds: 2), (Timer timer) {
-      if (currentImagesIndex < product!.images.length - 1) {
-        currentImagesIndex++;
-      } else {
-        currentImagesIndex = 0;
+      if (product != null) {
+        if (currentImagesIndex < product!.images.length - 1) {
+          currentImagesIndex++;
+        } else {
+          currentImagesIndex = 0;
+        }
       }
-
-      imagePageController.animateToPage(
-        currentImagesIndex,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInToLinear,
-      );
     });
+  }
+
+  void animateToPage() {
+    imagePageController.animateToPage(
+      currentImagesIndex,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInToLinear,
+    );
   }
 }

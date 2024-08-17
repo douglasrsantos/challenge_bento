@@ -22,7 +22,10 @@ void main() {
         price: 1,
         discountPercent: 10,
         productCategories: [],
-        images: [],
+        images: [
+          ImageModel(id: 1, image: 'mockImage1'),
+          ImageModel(id: 2, image: 'mockImage2'),
+        ],
       );
 
   setUp(() {
@@ -78,5 +81,36 @@ void main() {
     final priceString = controller.calculateFinalPrice();
 
     expect(priceString, '0.00');
+  });
+
+  test('should toggle isFavorite', () {
+    expect(controller.isFavorite, isFalse);
+    controller.toggleIsFavorite();
+    expect(controller.isFavorite, isTrue);
+    controller.toggleIsFavorite();
+    expect(controller.isFavorite, isFalse);
+  });
+
+  test('should start timer', () async {
+    controller.startAutoScroll();
+
+    expect(controller.timer, isNotNull);
+  });
+
+  test('should increment the image index every tick', () async {
+    when(productService.getProductById(productId: anyNamed('productId')))
+        .thenAnswer(
+      (_) async => mockValidProductModel(),
+    );
+
+    await controller.getProduct(1);
+
+    controller.startAutoScroll();
+
+    expect(controller.currentImagesIndex, 0);
+    await Future.delayed(const Duration(seconds: 3));
+    expect(controller.currentImagesIndex, 1);
+    await Future.delayed(const Duration(seconds: 2));
+    expect(controller.currentImagesIndex, 0);
   });
 }

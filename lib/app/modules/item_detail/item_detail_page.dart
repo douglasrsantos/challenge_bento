@@ -40,6 +40,10 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
       }
     });
 
+    reaction((_) => controller.currentImagesIndex, (_) {
+      controller.animateToPage();
+    });
+
     controller.init(id: widget.id);
   }
 
