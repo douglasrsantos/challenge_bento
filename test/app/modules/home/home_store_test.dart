@@ -136,4 +136,14 @@ void main() {
     expect(controller.infoErrorMessage, isNull);
     expect(controller.isLoading, isFalse);
   });
+
+  test('should handle error on fetch category data correctly', () async {
+    mockCategoryServiceRequest().thenThrow(mockError);
+
+    await controller.getCategories();
+
+    expect(controller.offerBanners, isEmpty);
+    expect(controller.infoErrorMessage, mockError);
+    expect(controller.isLoading, isFalse);
+  });
 }
