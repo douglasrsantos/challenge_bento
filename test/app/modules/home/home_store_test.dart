@@ -19,6 +19,9 @@ void main() {
   late MockTodaysSpecialService todaysSpecialService;
   late HomeStore controller;
 
+  //mock error message
+  final mockError = 'mockError';
+
   //mock user model
   UserModel mockValidUserModel() => UserModel(
         id: 1,
@@ -60,6 +63,16 @@ void main() {
 
     expect(controller.user?.id, 1);
     expect(controller.infoErrorMessage, isNull);
+    expect(controller.isLoading, isFalse);
+  });
+
+  test('should handle error on fetch user data correctly', () async {
+    mockUserServiceRequest().thenThrow(mockError);
+
+    await controller.getUserData();
+
+    expect(controller.user, isNull);
+    expect(controller.infoErrorMessage, mockError);
     expect(controller.isLoading, isFalse);
   });
 }
