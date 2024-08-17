@@ -21,7 +21,7 @@ void main() {
   late HomeStore controller;
 
   //mock error message
-  final mockError = 'mockError';
+  String mockError = 'mockError';
 
   //mock user model
   UserModel mockValidUserModel() => UserModel(
@@ -31,7 +31,7 @@ void main() {
         image: 'mockImage',
       );
 
-  //mock offer banner model
+  //mock offer banner model list
   List<OfferBannerModel> mockValidOfferBannerModel() => [
         OfferBannerModel(
           id: 1,
@@ -42,12 +42,25 @@ void main() {
         )
       ];
 
+//mock category model list
+  List<CategoryModel> mockValidCategoryModel() => [
+        CategoryModel(
+          id: 1,
+          name: 'mockName',
+          image: 'mockImage',
+        )
+      ];
+
   //simulates getUser request from userService
   PostExpectation mockUserServiceRequest() => when(userService.getUser());
 
   //simulates getAllOfferBanners request from offerBannerService
   PostExpectation mockOfferBannerServiceRequest() =>
       when(offerBannerService.getAllOfferBanners());
+
+  //simulates getAllCategories request from categoryService
+  PostExpectation mockCategoryServiceRequest() =>
+      when(categoryService.getAllCategories());
 
   setUp(() {
     userService = MockUserService();
@@ -110,6 +123,17 @@ void main() {
 
     expect(controller.offerBanners, isEmpty);
     expect(controller.infoErrorMessage, mockError);
+    expect(controller.isLoading, isFalse);
+  });
+
+  test('should return the correct category model and no error', () async {
+    mockCategoryServiceRequest()
+        .thenAnswer((_) async => mockValidCategoryModel());
+
+    await controller.getCategories();
+
+    expect(controller.categories.length, 1);
+    expect(controller.infoErrorMessage, isNull);
     expect(controller.isLoading, isFalse);
   });
 }
