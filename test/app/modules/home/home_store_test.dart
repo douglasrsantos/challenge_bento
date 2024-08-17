@@ -157,7 +157,7 @@ void main() {
 
     await controller.getCategories();
 
-    expect(controller.offerBanners, isEmpty);
+    expect(controller.categories, isEmpty);
     expect(controller.infoErrorMessage, mockError);
     expect(controller.isLoading, isFalse);
   });
@@ -171,6 +171,16 @@ void main() {
 
     expect(controller.todaysSpecials.length, 1);
     expect(controller.infoErrorMessage, isNull);
+    expect(controller.isLoading, isFalse);
+  });
+
+  test("should handle error on fetch today's special data correctly", () async {
+    mockTodaysSpecialServiceRequest().thenThrow(mockError);
+
+    await controller.getTodaysSpecials();
+
+    expect(controller.todaysSpecials, isEmpty);
+    expect(controller.infoErrorMessage, mockError);
     expect(controller.isLoading, isFalse);
   });
 }
