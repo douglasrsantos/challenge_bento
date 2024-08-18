@@ -14,7 +14,7 @@ class ProductServiceImpl implements ProductService {
       final result = await productRepository.getAllProducts();
 
       if (result.isEmpty) {
-        return null;
+        throw RequestError.noData;
       }
 
       ProductModel product = result.firstWhere(
@@ -24,6 +24,10 @@ class ProductServiceImpl implements ProductService {
 
       return product;
     } catch (e) {
+      if (e == RequestError.noData) {
+        throw "Error getting product";
+      }
+
       if (e == RequestError.notFound) {
         throw "Product not found";
       }

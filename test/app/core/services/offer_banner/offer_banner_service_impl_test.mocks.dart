@@ -3,11 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:challenge_bento/app/core/models/models.dart' as _i5;
-import 'package:challenge_bento/app/core/repositories/repositories.dart' as _i2;
-import 'package:challenge_bento/app/core/services/services.dart' as _i3;
+import 'package:challenge_bento/app/core/models/models.dart' as _i4;
+import 'package:challenge_bento/app/core/repositories/offer_banner/offer_banner_repository.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -23,45 +23,21 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeOfferBannerRepository_0 extends _i1.SmartFake
-    implements _i2.OfferBannerRepository {
-  _FakeOfferBannerRepository_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-/// A class which mocks [OfferBannerServiceImpl].
+/// A class which mocks [OfferBannerRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockOfferBannerServiceImpl extends _i1.Mock
-    implements _i3.OfferBannerServiceImpl {
+class MockOfferBannerRepository extends _i1.Mock
+    implements _i2.OfferBannerRepository {
   @override
-  _i2.OfferBannerRepository get offerBannerRepository => (super.noSuchMethod(
-        Invocation.getter(#offerBannerRepository),
-        returnValue: _FakeOfferBannerRepository_0(
-          this,
-          Invocation.getter(#offerBannerRepository),
-        ),
-        returnValueForMissingStub: _FakeOfferBannerRepository_0(
-          this,
-          Invocation.getter(#offerBannerRepository),
-        ),
-      ) as _i2.OfferBannerRepository);
-
-  @override
-  _i4.Future<List<_i5.OfferBannerModel>> getAllOfferBanners() =>
+  _i3.Future<List<_i4.OfferBannerModel>> getAllOfferBanners() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllOfferBanners,
           [],
         ),
-        returnValue: _i4.Future<List<_i5.OfferBannerModel>>.value(
-            <_i5.OfferBannerModel>[]),
-        returnValueForMissingStub: _i4.Future<List<_i5.OfferBannerModel>>.value(
-            <_i5.OfferBannerModel>[]),
-      ) as _i4.Future<List<_i5.OfferBannerModel>>);
+        returnValue: _i3.Future<List<_i4.OfferBannerModel>>.value(
+            <_i4.OfferBannerModel>[]),
+        returnValueForMissingStub: _i3.Future<List<_i4.OfferBannerModel>>.value(
+            <_i4.OfferBannerModel>[]),
+      ) as _i3.Future<List<_i4.OfferBannerModel>>);
 }

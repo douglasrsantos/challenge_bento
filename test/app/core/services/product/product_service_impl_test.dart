@@ -9,10 +9,10 @@ import 'package:challenge_bento/app/core/services/services.dart';
 
 import 'product_service_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<ProductServiceImpl>()])
 @GenerateNiceMocks([MockSpec<ProductRepository>()])
 void main() {
-  late MockProductServiceImpl productServiceImpl;
+  late MockProductRepository productRepository;
+  late ProductServiceImpl productServiceImpl;
 
   //mock product model
   ProductModel mockValidProductModel() => ProductModel(
@@ -27,32 +27,34 @@ void main() {
         images: [],
       );
 
-  //simulates getProductById request from productServiceImpl
-  PostExpectation mockRequest({int? id}) => when(productServiceImpl
-      .getProductById(productId: id ?? anyNamed('productId')));
+  //simulates getAllProducts request from productRepository
+  PostExpectation mockRepositoryRequest() =>
+      when(productRepository.getAllProducts());
 
   //mock of requests who return success
-  void mockRequestSuccess() {
-    mockRequest().thenAnswer((_) async => mockValidProductModel());
+  void mockRepositoryRequestSuccess() {
+    mockRepositoryRequest().thenAnswer((_) async => [mockValidProductModel()]);
   }
 
   //mock of requests who return errors
-  void mockRequestError(dynamic error, {int? id}) {
-    mockRequest(id: id).thenThrow(error);
+  void mockRepositoryRequestError(dynamic error) {
+    mockRepositoryRequest().thenThrow(error);
   }
 
   //method who returns function getProductById
   Future<ProductModel?> getProduct(int? id) async {
-    return await productServiceImpl.getProductById(productId: id);
+    return await productServiceImpl.getProductById(productId: id ?? 0);
   }
 
   //load the productServiceImpl mock before starting tests
   setUp(() {
-    productServiceImpl = MockProductServiceImpl();
+    productRepository = MockProductRepository();
+    productServiceImpl =
+        ProductServiceImpl(productRepository: productRepository);
   });
 
   test('should return a product model', () async {
-    mockRequestSuccess();
+    mockRepositoryRequestSuccess();
 
     final product = await getProduct(1);
 
@@ -60,19 +62,19 @@ void main() {
   });
 
   test('should return error not found if product id not exists', () async {
-    mockRequestError(RequestError.notFound, id: 2);
+    mockRepositoryRequestSuccess();
 
-    expect(() async => await getProduct(2), throwsA(RequestError.notFound));
+    expect(() async => await getProduct(2), throwsA('Product not found'));
   });
 
   test('should return error no data if json file is empty', () async {
-    mockRequestError(RequestError.noData);
+    mockRepositoryRequestError(RequestError.noData);
 
-    expect(() async => await getProduct(1), throwsA(RequestError.noData));
+    expect(() async => await getProduct(1), throwsA('Error getting product'));
   });
 
   test('should return an error if the request is not completed', () async {
-    mockRequestError('generic-error');
+    mockRepositoryRequestError('generic-error');
 
     expect(() async => await getProduct(1), throwsA('generic-error'));
   });

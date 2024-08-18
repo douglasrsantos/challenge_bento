@@ -6,10 +6,14 @@ import 'package:challenge_bento/app/core/repositories/repositories.dart';
 import 'package:challenge_bento/app/core/utils/utils.dart';
 
 class OfferBannerRepositoryImpl implements OfferBannerRepository {
+  final JsonProvider jsonProvider;
+
+  OfferBannerRepositoryImpl({required this.jsonProvider});
+
   @override
   Future<List<OfferBannerModel>> getAllOfferBanners() async {
     try {
-      final jsonString = await AccessDataJson.getJson();
+      final jsonString = await jsonProvider.getJson();
 
       if (jsonString.isEmpty) {
         throw RequestError.noData;

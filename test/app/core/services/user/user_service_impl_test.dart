@@ -5,12 +5,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/services/services.dart';
+import 'package:challenge_bento/app/core/repositories/repositories.dart';
 
 import 'user_service_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<UserServiceImpl>()])
+@GenerateNiceMocks([MockSpec<UserRepository>()])
 void main() {
-  late MockUserServiceImpl userServiceImpl;
+  late MockUserRepository userRepository;
+  late UserServiceImpl userServiceImpl;
 
 //mock user model
   UserModel mockValidUserModel() => UserModel(
@@ -20,8 +22,8 @@ void main() {
         image: 'mockImage',
       );
 
-  //simulates getUser request from userServiceImpl
-  PostExpectation mockRequest() => when(userServiceImpl.getUser());
+  //simulates getUser request from userRepository
+  PostExpectation mockRequest() => when(userRepository.getUser());
 
   //mock of requests who return success
   void mockRequestSuccess(UserModel? data) {
@@ -40,7 +42,8 @@ void main() {
 
   //load the userServiceImpl mock before starting tests
   setUp(() {
-    userServiceImpl = MockUserServiceImpl();
+    userRepository = MockUserRepository();
+    userServiceImpl = UserServiceImpl(userRepository: userRepository);
   });
 
   test('should return a user model', () async {

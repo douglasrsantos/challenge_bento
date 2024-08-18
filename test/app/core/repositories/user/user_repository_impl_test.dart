@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -5,26 +7,33 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/repositories/repositories.dart';
+import 'package:challenge_bento/app/core/utils/utils.dart';
 
 import 'user_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<UserRepositoryImpl>()])
+@GenerateNiceMocks([MockSpec<JsonProvider>()])
 void main() {
-  late MockUserRepositoryImpl userRepositoryImpl;
+  late MockJsonProvider jsonProvider;
+  late UserRepositoryImpl userRepositoryImpl;
 
-  //mock user model
-  UserModel mockValidUserModel() => UserModel(
-        id: 1,
-        type: 'mockType',
-        name: 'mockName',
-        image: 'mockImage',
-      );
+  //mock json of user
+  String jsonUser = jsonEncode({
+    'user': {
+      'id': 1,
+      'type': 'mockType',
+      'name': 'mockName',
+      'image': 'mockImage',
+    },
+  });
 
-  //simulates getUser request from userRepositoryImpl
-  PostExpectation mockRequest() => when(userRepositoryImpl.getUser());
+  //mock empty json of user
+  String emptyJsonUser = jsonEncode({'user': []});
+
+  //simulates getJson request from AccessDataJson
+  PostExpectation mockRequest() => when(jsonProvider.getJson());
 
   //mock of requests who return success
-  void mockRequestSuccess(UserModel? data) {
+  void mockRequestSuccess(String data) {
     mockRequest().thenAnswer((_) async => data);
   }
 
@@ -40,19 +49,22 @@ void main() {
 
   //load the userRepositoryImpl mock before starting tests
   setUp(() {
-    userRepositoryImpl = MockUserRepositoryImpl();
+    jsonProvider = MockJsonProvider();
+    userRepositoryImpl = UserRepositoryImpl(jsonProvider: jsonProvider);
   });
 
   test('should return a user model', () async {
-    mockRequestSuccess(mockValidUserModel());
+    mockRequestSuccess(jsonUser);
 
     final user = await getUser();
 
-    expect(user!.id, mockValidUserModel().id);
+    final mapUser = jsonDecode(jsonUser);
+
+    expect(user!.id, mapUser['user']['id']);
   });
 
   test('should return null if request success, but no have data', () async {
-    mockRequestSuccess(null);
+    mockRequestSuccess(emptyJsonUser);
 
     final user = await getUser();
 
@@ -62,7 +74,7 @@ void main() {
   test('should return error no data if json file is empty', () async {
     mockRequestError(RequestError.noData);
 
-    expect(() async => await getUser(), throwsA(RequestError.noData));
+    expect(() async => await getUser(), throwsA('Error getting user data'));
   });
 
   test('should return an error if the request is not completed', () async {

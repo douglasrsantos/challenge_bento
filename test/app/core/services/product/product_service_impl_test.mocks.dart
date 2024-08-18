@@ -3,11 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:challenge_bento/app/core/models/product_model.dart' as _i5;
-import 'package:challenge_bento/app/core/repositories/repositories.dart' as _i2;
-import 'package:challenge_bento/app/core/services/services.dart' as _i3;
+import 'package:challenge_bento/app/core/models/models.dart' as _i4;
+import 'package:challenge_bento/app/core/repositories/product/product_repository.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -23,61 +23,19 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeProductRepository_0 extends _i1.SmartFake
-    implements _i2.ProductRepository {
-  _FakeProductRepository_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-/// A class which mocks [ProductServiceImpl].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockProductServiceImpl extends _i1.Mock
-    implements _i3.ProductServiceImpl {
-  @override
-  _i2.ProductRepository get productRepository => (super.noSuchMethod(
-        Invocation.getter(#productRepository),
-        returnValue: _FakeProductRepository_0(
-          this,
-          Invocation.getter(#productRepository),
-        ),
-        returnValueForMissingStub: _FakeProductRepository_0(
-          this,
-          Invocation.getter(#productRepository),
-        ),
-      ) as _i2.ProductRepository);
-
-  @override
-  _i4.Future<_i5.ProductModel?> getProductById({required int? productId}) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getProductById,
-          [],
-          {#productId: productId},
-        ),
-        returnValue: _i4.Future<_i5.ProductModel?>.value(),
-        returnValueForMissingStub: _i4.Future<_i5.ProductModel?>.value(),
-      ) as _i4.Future<_i5.ProductModel?>);
-}
-
 /// A class which mocks [ProductRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockProductRepository extends _i1.Mock implements _i2.ProductRepository {
   @override
-  _i4.Future<List<_i5.ProductModel>> getAllProducts() => (super.noSuchMethod(
+  _i3.Future<List<_i4.ProductModel>> getAllProducts() => (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
         ),
         returnValue:
-            _i4.Future<List<_i5.ProductModel>>.value(<_i5.ProductModel>[]),
+            _i3.Future<List<_i4.ProductModel>>.value(<_i4.ProductModel>[]),
         returnValueForMissingStub:
-            _i4.Future<List<_i5.ProductModel>>.value(<_i5.ProductModel>[]),
-      ) as _i4.Future<List<_i5.ProductModel>>);
+            _i3.Future<List<_i4.ProductModel>>.value(<_i4.ProductModel>[]),
+      ) as _i3.Future<List<_i4.ProductModel>>);
 }

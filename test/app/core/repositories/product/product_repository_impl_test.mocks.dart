@@ -5,9 +5,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:challenge_bento/app/core/models/models.dart' as _i4;
-import 'package:challenge_bento/app/core/repositories/repositories.dart' as _i2;
+import 'package:challenge_bento/app/core/utils/json_provider.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,20 +22,30 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [ProductRepositoryImpl].
+/// A class which mocks [JsonProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockProductRepositoryImpl extends _i1.Mock
-    implements _i2.ProductRepositoryImpl {
+class MockJsonProvider extends _i1.Mock implements _i2.JsonProvider {
   @override
-  _i3.Future<List<_i4.ProductModel>> getAllProducts() => (super.noSuchMethod(
+  _i3.Future<String> getJson() => (super.noSuchMethod(
         Invocation.method(
-          #getAllProducts,
+          #getJson,
           [],
         ),
-        returnValue:
-            _i3.Future<List<_i4.ProductModel>>.value(<_i4.ProductModel>[]),
+        returnValue: _i3.Future<String>.value(_i4.dummyValue<String>(
+          this,
+          Invocation.method(
+            #getJson,
+            [],
+          ),
+        )),
         returnValueForMissingStub:
-            _i3.Future<List<_i4.ProductModel>>.value(<_i4.ProductModel>[]),
-      ) as _i3.Future<List<_i4.ProductModel>>);
+            _i3.Future<String>.value(_i4.dummyValue<String>(
+          this,
+          Invocation.method(
+            #getJson,
+            [],
+          ),
+        )),
+      ) as _i3.Future<String>);
 }

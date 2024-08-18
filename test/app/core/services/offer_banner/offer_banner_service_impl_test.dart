@@ -5,12 +5,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/services/services.dart';
+import 'package:challenge_bento/app/core/repositories/repositories.dart';
 
 import 'offer_banner_service_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<OfferBannerServiceImpl>()])
+@GenerateNiceMocks([MockSpec<OfferBannerRepository>()])
 void main() {
-  late MockOfferBannerServiceImpl offerBannerServiceImpl;
+  late MockOfferBannerRepository offerBannerRepository;
+  late OfferBannerServiceImpl offerBannerServiceImpl;
 
   //mock offer banner model
   List<OfferBannerModel> mockValidOfferBannerModelList() => [
@@ -23,9 +25,9 @@ void main() {
         ),
       ];
 
-  //simulates getAllOfferBanners request from offerBannerServiceImpl
+  //simulates getAllOfferBanners request from offerBannerRepository
   PostExpectation mockRequest() =>
-      when(offerBannerServiceImpl.getAllOfferBanners());
+      when(offerBannerRepository.getAllOfferBanners());
 
   //mock of requests who return success
   void mockRequestSuccess(List<OfferBannerModel> data) {
@@ -44,7 +46,9 @@ void main() {
 
   //load the offerBannerServiceImpl mock before starting tests
   setUp(() {
-    offerBannerServiceImpl = MockOfferBannerServiceImpl();
+    offerBannerRepository = MockOfferBannerRepository();
+    offerBannerServiceImpl =
+        OfferBannerServiceImpl(offerBannerRepository: offerBannerRepository);
   });
 
   test("should return a offer banner model list", () async {

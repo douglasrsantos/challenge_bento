@@ -3,11 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:challenge_bento/app/core/models/models.dart' as _i5;
-import 'package:challenge_bento/app/core/repositories/repositories.dart' as _i2;
-import 'package:challenge_bento/app/core/services/services.dart' as _i3;
+import 'package:challenge_bento/app/core/models/models.dart' as _i4;
+import 'package:challenge_bento/app/core/repositories/todays_special/todays_special_repository.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -23,47 +23,22 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeTodaysSpecialRepository_0 extends _i1.SmartFake
-    implements _i2.TodaysSpecialRepository {
-  _FakeTodaysSpecialRepository_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-/// A class which mocks [TodaysSpecialServiceImpl].
+/// A class which mocks [TodaysSpecialRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTodaysSpecialServiceImpl extends _i1.Mock
-    implements _i3.TodaysSpecialServiceImpl {
+class MockTodaysSpecialRepository extends _i1.Mock
+    implements _i2.TodaysSpecialRepository {
   @override
-  _i2.TodaysSpecialRepository get todaysSpecialRepository =>
-      (super.noSuchMethod(
-        Invocation.getter(#todaysSpecialRepository),
-        returnValue: _FakeTodaysSpecialRepository_0(
-          this,
-          Invocation.getter(#todaysSpecialRepository),
-        ),
-        returnValueForMissingStub: _FakeTodaysSpecialRepository_0(
-          this,
-          Invocation.getter(#todaysSpecialRepository),
-        ),
-      ) as _i2.TodaysSpecialRepository);
-
-  @override
-  _i4.Future<List<_i5.TodaysSpecialModel>> getAllTodaysSpecials() =>
+  _i3.Future<List<_i4.TodaysSpecialModel>> getAllTodaysSpecials() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllTodaysSpecials,
           [],
         ),
-        returnValue: _i4.Future<List<_i5.TodaysSpecialModel>>.value(
-            <_i5.TodaysSpecialModel>[]),
+        returnValue: _i3.Future<List<_i4.TodaysSpecialModel>>.value(
+            <_i4.TodaysSpecialModel>[]),
         returnValueForMissingStub:
-            _i4.Future<List<_i5.TodaysSpecialModel>>.value(
-                <_i5.TodaysSpecialModel>[]),
-      ) as _i4.Future<List<_i5.TodaysSpecialModel>>);
+            _i3.Future<List<_i4.TodaysSpecialModel>>.value(
+                <_i4.TodaysSpecialModel>[]),
+      ) as _i3.Future<List<_i4.TodaysSpecialModel>>);
 }

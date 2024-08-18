@@ -4,13 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
+import 'package:challenge_bento/app/core/repositories/repositories.dart';
 import 'package:challenge_bento/app/core/services/services.dart';
 
 import 'category_service_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<CategoryServiceImpl>()])
+@GenerateNiceMocks([MockSpec<CategoryRepository>()])
 void main() {
-  late MockCategoryServiceImpl categoryServiceImpl;
+  late MockCategoryRepository categoryRepository;
+  late CategoryServiceImpl categoryServiceImpl;
 
   //mock category model
   List<CategoryModel> mockValidCategoryModelList() => [
@@ -21,8 +23,8 @@ void main() {
         ),
       ];
 
-  //simulates getAllCategories request from categoryServiceImpl
-  PostExpectation mockRequest() => when(categoryServiceImpl.getAllCategories());
+  //simulates getAllCategories request from categoryRepository
+  PostExpectation mockRequest() => when(categoryRepository.getAllCategories());
 
   //mock of requests who return success
   void mockRequestSuccess(List<CategoryModel> data) {
@@ -39,9 +41,11 @@ void main() {
     return await categoryServiceImpl.getAllCategories();
   }
 
-  //load the categoryServiceImpl mock before starting tests
+  //load the categoryRepository mock before starting tests
   setUp(() {
-    categoryServiceImpl = MockCategoryServiceImpl();
+    categoryRepository = MockCategoryRepository();
+    categoryServiceImpl =
+        CategoryServiceImpl(categoryRepository: categoryRepository);
   });
 
   test("should return a category model list", () async {
