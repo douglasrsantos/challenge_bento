@@ -12,4 +12,7 @@ Project characteristics:
 - Mock data in a json file;
 - Go Router for application routing;
 - GetIt for dependency injection;
+- Internationalization into English and Portuguese (pt-br);
+- Unit tests;
+- Better image performance;
 - mobX for state management: I used mobX as a state manager because I find it facilitates separation of responsibilities, improves testability, and promotes cleaner and more readable code.
