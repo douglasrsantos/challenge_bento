@@ -145,6 +145,7 @@ abstract class HomeStoreBase with Store {
 
   ///Navigate to the clicked page in the bottom bar
   void onTapNavigateOnBottomBar(int index) {
+    currentPageIndex = index;
     pageController.animateToPage(
       index,
       duration: const Duration(milliseconds: 500),
