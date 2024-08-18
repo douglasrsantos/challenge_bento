@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -5,30 +7,36 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/repositories/repositories.dart';
+import 'package:challenge_bento/app/core/utils/utils.dart';
 
 import 'offer_banner_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<OfferBannerRepositoryImpl>()])
+@GenerateNiceMocks([MockSpec<JsonProvider>()])
 void main() {
-  late MockOfferBannerRepositoryImpl offerBannerRepositoryImpl;
+  late MockJsonProvider jsonProvider;
+  late OfferBannerRepositoryImpl offerBannerRepositoryImpl;
 
-  //mock offer banner model
-  List<OfferBannerModel> mockValidOfferBannerModelList() => [
-        OfferBannerModel(
-          id: 1,
-          title: 'mockTitle',
-          subtitle: 'mockSubtitle',
-          image: 'mockImage',
-          bannerColor: 'mockBannerColor',
-        ),
-      ];
+  //mock json of offer banners
+  String jsonOfferBanners = jsonEncode({
+    'offerBanners': [
+      {
+        'id': 1,
+        'title': 'mockTitle',
+        'subtitle': 'mockSubtitle',
+        'image': 'mockImage',
+        'bannerColor': 'mockBannerColor',
+      }
+    ]
+  });
 
-  //simulates getAllOfferBanners request from offerBannerRepositoryImpl
-  PostExpectation mockRequest() =>
-      when(offerBannerRepositoryImpl.getAllOfferBanners());
+  //mock empty json of offer banners
+  String emptyJsonOfferBanners = jsonEncode({'offerBanners': []});
+
+  //simulates getJson request from AccessDataJson
+  PostExpectation mockRequest() => when(jsonProvider.getJson());
 
   //mock of requests who return success
-  void mockRequestSuccess(List<OfferBannerModel> data) {
+  void mockRequestSuccess(String data) {
     mockRequest().thenAnswer((_) async => data);
   }
 
@@ -44,11 +52,13 @@ void main() {
 
   //load the offerBannerRepositoryImpl mock before starting tests
   setUp(() {
-    offerBannerRepositoryImpl = MockOfferBannerRepositoryImpl();
+    jsonProvider = MockJsonProvider();
+    offerBannerRepositoryImpl =
+        OfferBannerRepositoryImpl(jsonProvider: jsonProvider);
   });
 
   test("should return a offer banner model list", () async {
-    mockRequestSuccess(mockValidOfferBannerModelList());
+    mockRequestSuccess(jsonOfferBanners);
 
     final offerBanners = await getOfferBanners();
 
@@ -57,7 +67,7 @@ void main() {
 
   test('should return empty list if request success, but no have data',
       () async {
-    mockRequestSuccess([]);
+    mockRequestSuccess(emptyJsonOfferBanners);
 
     final offerBanners = await getOfferBanners();
 
@@ -67,7 +77,8 @@ void main() {
   test('should return error no data if json file is empty', () async {
     mockRequestError(RequestError.noData);
 
-    expect(() async => await getOfferBanners(), throwsA(RequestError.noData));
+    expect(() async => await getOfferBanners(),
+        throwsA('Error when getting the list of offer banners'));
   });
 
   test('should return an error if the request is not completed', () async {

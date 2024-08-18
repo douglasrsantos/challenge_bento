@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -5,30 +7,36 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/repositories/repositories.dart';
+import 'package:challenge_bento/app/core/utils/utils.dart';
 
 import 'todays_special_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<TodaysSpecialRepositoryImpl>()])
+@GenerateNiceMocks([MockSpec<JsonProvider>()])
 void main() {
-  late MockTodaysSpecialRepositoryImpl todaysSpecialRepositoryImpl;
+  late MockJsonProvider jsonProvider;
+  late TodaysSpecialRepositoryImpl todaysSpecialRepositoryImpl;
 
-  //mock today's special model
-  List<TodaysSpecialModel> mockValidTodaysSpecialModelList() => [
-        TodaysSpecialModel(
-          id: 1,
-          name: 'mockName',
-          rating: 1.1,
-          image: 'mockImage',
-          colorCode: 'mockColorCode',
-        ),
-      ];
+  //mock json of today's specials
+  String jsonTodaysSpecials = jsonEncode({
+    'todaysSpecial': [
+      {
+        'id': 1,
+        'name': 'mockName',
+        'rating': 1.1,
+        'image': 'mockImage',
+        'colorCode': 'mockColorCode',
+      },
+    ]
+  });
 
-  //simulates getAllTodaysSpecials request from todaysSpecialRepositoryImpl
-  PostExpectation mockRequest() =>
-      when(todaysSpecialRepositoryImpl.getAllTodaysSpecials());
+  //mock empty json of today's specials
+  String emptyJsonTodaysSpecials = jsonEncode({'todaysSpecial': []});
+
+  //simulates getJson request from AccessDataJson
+  PostExpectation mockRequest() => when(jsonProvider.getJson());
 
   //mock of requests who return success
-  void mockRequestSuccess(List<TodaysSpecialModel> data) {
+  void mockRequestSuccess(String data) {
     mockRequest().thenAnswer((_) async => data);
   }
 
@@ -44,11 +52,13 @@ void main() {
 
   //load the todaysSpecialRepositoryImpl mock before starting tests
   setUp(() {
-    todaysSpecialRepositoryImpl = MockTodaysSpecialRepositoryImpl();
+    jsonProvider = MockJsonProvider();
+    todaysSpecialRepositoryImpl =
+        TodaysSpecialRepositoryImpl(jsonProvider: jsonProvider);
   });
 
   test("should return a today's special model list", () async {
-    mockRequestSuccess(mockValidTodaysSpecialModelList());
+    mockRequestSuccess(jsonTodaysSpecials);
 
     final todaysSpecials = await getTodaysSpecials();
 
@@ -57,7 +67,7 @@ void main() {
 
   test('should return empty list if request success, but no have data',
       () async {
-    mockRequestSuccess([]);
+    mockRequestSuccess(emptyJsonTodaysSpecials);
 
     final todaysSpecials = await getTodaysSpecials();
 
@@ -67,7 +77,8 @@ void main() {
   test('should return error no data if json file is empty', () async {
     mockRequestError(RequestError.noData);
 
-    expect(() async => await getTodaysSpecials(), throwsA(RequestError.noData));
+    expect(() async => await getTodaysSpecials(),
+        throwsA("Error getting list of today's special"));
   });
 
   test('should return an error if the request is not completed', () async {

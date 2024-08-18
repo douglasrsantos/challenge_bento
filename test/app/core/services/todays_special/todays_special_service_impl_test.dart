@@ -5,12 +5,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:challenge_bento/app/core/error/error.dart';
 import 'package:challenge_bento/app/core/models/models.dart';
 import 'package:challenge_bento/app/core/services/services.dart';
+import 'package:challenge_bento/app/core/repositories/repositories.dart';
 
 import 'todays_special_service_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<TodaysSpecialServiceImpl>()])
+@GenerateNiceMocks([MockSpec<TodaysSpecialRepository>()])
 void main() {
-  late MockTodaysSpecialServiceImpl todaysSpecialServiceImpl;
+  late MockTodaysSpecialRepository todaysSpecialRepository;
+  late TodaysSpecialServiceImpl todaysSpecialServiceImpl;
 
   //mock today's special model
   List<TodaysSpecialModel> mockValidTodaysSpecialModelList() => [
@@ -23,9 +25,9 @@ void main() {
         ),
       ];
 
-  //simulates getAllTodaysSpecials request from todaysSpecialServiceImpl
+  //simulates getAllTodaysSpecials request from todaysSpecialRepository
   PostExpectation mockRequest() =>
-      when(todaysSpecialServiceImpl.getAllTodaysSpecials());
+      when(todaysSpecialRepository.getAllTodaysSpecials());
 
   //mock of requests who return success
   void mockRequestSuccess(List<TodaysSpecialModel> data) {
@@ -44,7 +46,9 @@ void main() {
 
   //load the todaysSpecialServiceImpl mock before starting tests
   setUp(() {
-    todaysSpecialServiceImpl = MockTodaysSpecialServiceImpl();
+    todaysSpecialRepository = MockTodaysSpecialRepository();
+    todaysSpecialServiceImpl = TodaysSpecialServiceImpl(
+        todaysSpecialRepository: todaysSpecialRepository);
   });
 
   test("should return a today's special model list", () async {

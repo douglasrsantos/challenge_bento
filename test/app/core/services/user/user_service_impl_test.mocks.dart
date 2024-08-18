@@ -3,11 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:challenge_bento/app/core/models/models.dart' as _i5;
-import 'package:challenge_bento/app/core/repositories/repositories.dart' as _i2;
-import 'package:challenge_bento/app/core/services/services.dart' as _i3;
+import 'package:challenge_bento/app/core/models/models.dart' as _i4;
+import 'package:challenge_bento/app/core/repositories/user/user_repository.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -23,41 +23,17 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeUserRepository_0 extends _i1.SmartFake
-    implements _i2.UserRepository {
-  _FakeUserRepository_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-/// A class which mocks [UserServiceImpl].
+/// A class which mocks [UserRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUserServiceImpl extends _i1.Mock implements _i3.UserServiceImpl {
+class MockUserRepository extends _i1.Mock implements _i2.UserRepository {
   @override
-  _i2.UserRepository get userRepository => (super.noSuchMethod(
-        Invocation.getter(#userRepository),
-        returnValue: _FakeUserRepository_0(
-          this,
-          Invocation.getter(#userRepository),
-        ),
-        returnValueForMissingStub: _FakeUserRepository_0(
-          this,
-          Invocation.getter(#userRepository),
-        ),
-      ) as _i2.UserRepository);
-
-  @override
-  _i4.Future<_i5.UserModel?> getUser() => (super.noSuchMethod(
+  _i3.Future<_i4.UserModel?> getUser() => (super.noSuchMethod(
         Invocation.method(
           #getUser,
           [],
         ),
-        returnValue: _i4.Future<_i5.UserModel?>.value(),
-        returnValueForMissingStub: _i4.Future<_i5.UserModel?>.value(),
-      ) as _i4.Future<_i5.UserModel?>);
+        returnValue: _i3.Future<_i4.UserModel?>.value(),
+        returnValueForMissingStub: _i3.Future<_i4.UserModel?>.value(),
+      ) as _i3.Future<_i4.UserModel?>);
 }
