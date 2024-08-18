@@ -16,3 +16,5 @@ Project characteristics:
 - Unit tests;
 - Better image performance;
 - mobX for state management: I used mobX as a state manager because I find it facilitates separation of responsibilities, improves testability, and promotes cleaner and more readable code.
+
+- OBS: I put the apk in the apk_flutter folder for better testing of app.
